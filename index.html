@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="かすぴんホテル｜上質なおもてなしと贅沢な空間でお客様をお迎えするラグジュアリーホテル。東京都心に位置し、温泉・スパ・レストランを完備。" />
+  <meta name="keywords" content="かすぴんホテル,KasupinHotel,ラグジュアリーホテル,東京,ホテル予約,温泉,スパ" />
+  <meta property="og:title" content="KasupinHotel｜かすぴんホテル公式サイト" />
+  <meta property="og:description" content="上質なおもてなしと贅沢な空間でお客様をお迎えするラグジュアリーホテル" />
+  <meta property="og:type" content="website" />
+  <title>KasupinHotel｜かすぴんホテル 公式サイト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --gold:       #b8933f;
+      --gold-light: #d4b06a;
+      --gold-pale:  #f5ead8;
+      --navy:       #1a2340;
+      --dark:       #0f0d08;
+      --dark2:      #1a1510;
+      --brown:      #5c3d1e;
+      --warm-gray:  #f8f5f0;
+      --text:       #2a2218;
+      --text-muted: #7a6a5c;
+      --white:      #ffffff;
+      --radius:     8px;
+      --shadow:     0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg:  0 20px 60px rgba(0,0,0,0.18);
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+    input, select, textarea { font-family: inherit; outline: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LOADING SCREEN
+    ============================================================ */
+    #loading {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--dark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 32px;
+      transition: opacity 0.8s, visibility 0.8s;
+    }
+    #loading.hidden { opacity: 0; visibility: hidden; }
+    .loading-logo-img {
+      width: 160px;
+      height: auto;
+      opacity: 0;
+      animation: logoFadeIn 0.8s 0.3s forwards;
+    }
+    @keyframes logoFadeIn {
+      to { opacity: 1; }
+    }
+    .loading-bar-wrap {
+      width: 180px; height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+    .loading-bar {
+      height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      animation: loadBar 2.0s ease forwards;
+    }
+    @keyframes loadBar { to { width: 100%; } }
+    .loading-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.45em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      animation: logoFadeIn 0.8s 0.5s forwards;
+      opacity: 0;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: 88px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px;
+      transition: background var(--transition), box-shadow var(--transition), height var(--transition);
+    }
+    #header.scrolled {
+      background: rgba(10,8,4,0.96);
+      box-shadow: 0 1px 0 rgba(184,147,63,0.2);
+      height: 68px;
+      backdrop-filter: blur(16px);
+    }
+    .header-logo img {
+      height: 52px;
+      width: auto;
+      transition: height var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    }
+    #header.scrolled .header-logo img { height: 42px; }
+    nav.main-nav {
+      display: flex; align-items: center; gap: 0;
+    }
+    nav.main-nav a {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.78);
+      padding: 8px 16px;
+      position: relative;
+      transition: color var(--transition);
+    }
+    nav.main-nav a::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    nav.main-nav a:hover { color: var(--gold-light); }
+    nav.main-nav a:hover::after { width: 55%; }
+    .nav-reserve {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 11px 24px !important;
+      border-radius: 2px;
+      font-weight: 500 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.12em !important;
+      margin-left: 16px;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-reserve::after { display: none !important; }
+    .nav-reserve:hover { background: var(--gold-light) !important; transform: translateY(-1px) !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      width: 32px; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; height: 1px; background: var(--white); transition: var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 490;
+      background: rgba(10,8,4,0.98);
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--white);
+      letter-spacing: 0.08em;
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-logo { width: 100px; height: auto; margin-bottom: 20px; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.8s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10,8,4,0.65) 0%,
+        rgba(10,8,4,0.25) 50%,
+        rgba(10,8,4,0.55) 100%
+      );
+    }
+    /* 実際のKASUPIN HOTEL画像を使用 */
+    .hero-slide:nth-child(1) {
+      background-image: url('https://www.genspark.ai/api/files/s/3QfY3gmD');
+    }
+    .hero-slide:nth-child(2) {
+      background-image: url('https://www.genspark.ai/api/files/s/J61dNdu2');
+    }
+    .hero-slide:nth-child(3) {
+      background-image: url('https://www.genspark.ai/api/files/s/zKPfaGHx');
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; color: var(--white);
+      padding: 0 24px;
+      animation: heroFadeUp 1.2s 2.2s both;
+    }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo-img {
+      width: 160px; height: auto; margin: 0 auto 32px;
+      filter: brightness(0) invert(1) drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+      opacity: 0.92;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      font-weight: 400; line-height: 1.05;
+      letter-spacing: 0.06em;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+      margin-bottom: 12px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-subtitle {
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      color: rgba(255,255,255,0.72); letter-spacing: 0.25em; margin-bottom: 48px;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      padding: 16px 44px; border-radius: 2px;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.14em;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.55); color: var(--white);
+      padding: 15px 42px; border-radius: 2px;
+      font-size: 0.85rem; letter-spacing: 0.14em;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(184,147,63,0.1); transform: translateY(-2px); }
+    .hero-dots {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; gap: 12px;
+    }
+    .hero-dot {
+      width: 32px; height: 1px; background: rgba(255,255,255,0.3);
+      cursor: pointer; transition: background var(--transition);
+    }
+    .hero-dot.active { background: var(--gold); }
+    .scroll-indicator {
+      position: absolute; bottom: 36px; right: 52px; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 0.25em;
+    }
+    .scroll-line {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, rgba(184,147,63,0.8), transparent);
+      animation: scrollLine 2.2s infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+    }
+
+    /* ============================================================
+       QUICK BOOKING BAR
+    ============================================================ */
+    #quick-book { background: var(--dark2); border-top: 1px solid rgba(184,147,63,0.2); }
+    .qb-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    }
+    .qb-field {
+      display: flex; flex-direction: column;
+      padding: 22px 28px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      transition: background var(--transition);
+    }
+    .qb-field:hover { background: rgba(184,147,63,0.05); }
+    .qb-field label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+    .qb-field input, .qb-field select {
+      background: transparent; border: none; color: var(--white); font-size: 0.92rem;
+    }
+    .qb-field select option { background: var(--dark2); }
+    .qb-field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.35); cursor: pointer; }
+    .qb-submit {
+      background: var(--gold); color: var(--dark);
+      padding: 0 44px; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .qb-submit:hover { background: var(--gold-light); }
+
+    /* ============================================================
+       SECTION COMMON
+    ============================================================ */
+    .section-wrap { max-width: 1240px; margin: 0 auto; }
+    .sec-label {
+      font-size: 0.7rem; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400;
+      color: var(--dark); line-height: 1.22; letter-spacing: 0.03em;
+    }
+    .sec-line { width: 36px; height: 1px; background: var(--gold); margin: 20px 0 24px; }
+    .sec-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2; max-width: 520px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.85s ease, transform 0.85s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ============================================================
+       NUMBERS
+    ============================================================ */
+    #numbers { background: var(--warm-gray); padding: 60px 48px; }
+    .numbers-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .number-item { text-align: center; padding: 20px; }
+    .number-val { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--gold); line-height: 1; }
+    .number-val sup { font-size: 1.1rem; vertical-align: super; }
+    .number-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.14em; margin-top: 10px; }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about { padding: 120px 48px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
+    .about-imgs { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 300px 190px; gap: 10px; }
+    .about-img-main { grid-column: 1/3; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .about-img-main img { height: 300px; transition: transform 0.8s ease; }
+    .about-img-main:hover img { transform: scale(1.04); }
+    .about-img-s { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .about-img-s img { height: 190px; transition: transform 0.8s ease; }
+    .about-img-s:hover img { transform: scale(1.05); }
+    .about-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--gold-pale); border-left: 3px solid var(--gold);
+      padding: 14px 20px; border-radius: 3px; margin-top: 32px;
+      font-size: 0.85rem; color: var(--brown); font-weight: 500; line-height: 1.6;
+    }
+
+    /* ============================================================
+       ROOMS
+    ============================================================ */
+    #rooms { padding: 120px 48px; background: var(--warm-gray); }
+    #rooms .sec-hd { text-align: center; }
+    #rooms .sec-line { margin: 20px auto 52px; }
+    .rooms-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 48px; }
+    .room-card {
+      background: var(--white); border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .room-card:hover { transform: translateY(-9px); box-shadow: var(--shadow-lg); }
+    .room-img-wrap { position: relative; overflow: hidden; height: 240px; }
+    .room-img-wrap img { height: 100%; transition: transform 0.8s ease; }
+    .room-card:hover .room-img-wrap img { transform: scale(1.07); }
+    .room-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--gold); color: var(--dark);
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 2px; font-weight: 700;
+    }
+    .room-body { padding: 28px 26px; }
+    .room-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--dark); margin-bottom: 10px; }
+    .room-meta { display: flex; gap: 16px; font-size: 0.76rem; color: var(--text-muted); margin-bottom: 14px; flex-wrap: wrap; }
+    .room-meta span { display: flex; align-items: center; gap: 4px; }
+    .room-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 22px; }
+    .room-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 18px; border-top: 1px solid #ede8e0;
+    }
+    .room-price-label { font-size: 0.7rem; color: #bbb; margin-bottom: 4px; }
+    .room-price-val { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--gold); }
+    .room-price-val span { font-size: 0.72rem; color: #bbb; font-family: inherit; }
+    .btn-sm {
+      background: var(--dark); color: var(--white);
+      padding: 10px 20px; border-radius: 2px;
+      font-size: 0.78rem; letter-spacing: 0.1em;
+      transition: background var(--transition);
+    }
+    .btn-sm:hover { background: var(--gold); color: var(--dark); }
+
+    /* ============================================================
+       CALENDAR / BOOKING
+    ============================================================ */
+    #calendar-section { padding: 120px 48px; background: var(--white); }
+    .cal-layout { display: grid; grid-template-columns: 1fr 440px; gap: 72px; align-items: start; }
+    .calendar-widget {
+      background: var(--white); border: 1px solid #e5ddd4;
+      border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .cal-header {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
+      padding: 22px 28px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .cal-nav-btn {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%; color: var(--white); font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .cal-nav-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .cal-month-year { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); letter-spacing: 0.05em; }
+    .cal-body { padding: 22px 20px 26px; }
+    .cal-days-header { display: grid; grid-template-columns: repeat(7,1fr); margin-bottom: 10px; }
+    .cal-days-header span { text-align: center; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); padding: 6px 0; }
+    .cal-days-header span:first-child { color: #d06060; }
+    .cal-days-header span:last-child  { color: #6080cc; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
+    .cal-day {
+      aspect-ratio: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      border-radius: 6px; cursor: pointer; position: relative;
+      transition: background var(--transition), color var(--transition);
+      font-size: 0.86rem;
+    }
+    .cal-day:hover:not(.empty):not(.past):not(.booked) { background: var(--gold-pale); color: var(--brown); }
+    .cal-day.empty { cursor: default; }
+    .cal-day.past { color: #d0c8c0; cursor: default; }
+    .cal-day.today { font-weight: 700; color: var(--gold); }
+    .cal-day.today::before {
+      content: ''; position: absolute; bottom: 5px;
+      width: 4px; height: 4px; background: var(--gold); border-radius: 50%;
+    }
+    .cal-day.checkin { background: var(--gold); color: var(--dark); font-weight: 700; border-radius: 6px 0 0 6px; }
+    .cal-day.checkout { background: var(--gold); color: var(--dark); font-weight: 700; border-radius: 0 6px 6px 0; }
+    .cal-day.in-range { background: var(--gold-pale); color: var(--brown); border-radius: 0; }
+    .cal-day.booked { background: #f2ece6; color: #ccc; cursor: not-allowed; text-decoration: line-through; }
+    .cal-day.sun { color: #d06060; }
+    .cal-day.sat { color: #6080cc; }
+    .cal-day.checkin.sun,.cal-day.checkout.sun,.cal-day.checkin.sat,.cal-day.checkout.sat { color: var(--dark); }
+    .cal-legend {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding: 14px 20px; border-top: 1px solid #ede8e0;
+      background: var(--warm-gray);
+    }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.73rem; color: var(--text-muted); }
+    .legend-dot { width: 14px; height: 14px; border-radius: 3px; }
+    .legend-dot.ld-select { background: var(--gold); }
+    .legend-dot.ld-range  { background: var(--gold-pale); border: 1px solid var(--gold-light); }
+    .legend-dot.ld-booked { background: #f2ece6; border: 1px solid #ddd; }
+    .legend-dot.ld-today  { background: var(--white); border: 2px solid var(--gold); }
+
+    /* Booking Panel */
+    .booking-panel {
+      background: linear-gradient(160deg, var(--dark) 0%, var(--navy) 100%);
+      border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .bp-top {
+      padding: 30px 32px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+    .bp-logo { height: 36px; width: auto; margin-bottom: 14px; filter: brightness(0) invert(1) opacity(0.85); }
+    .bp-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: 4px; }
+    .bp-sub { font-size: 0.75rem; color: rgba(255,255,255,0.38); letter-spacing: 0.14em; }
+    .bp-body { padding: 28px 32px; }
+    .bp-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+    .bp-date-box {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 14px 16px;
+    }
+    .bp-date-label { font-size: 0.66rem; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
+    .bp-date-val { font-size: 0.98rem; color: var(--white); font-weight: 500; }
+    .bp-date-day { font-size: 0.73rem; color: rgba(255,255,255,0.38); margin-top: 2px; }
+    .bp-field { margin-bottom: 16px; }
+    .bp-field label { display: block; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--gold); margin-bottom: 8px; text-transform: uppercase; }
+    .bp-field select, .bp-field input {
+      width: 100%; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13); border-radius: 6px;
+      padding: 13px 16px; color: var(--white); font-size: 0.92rem;
+      transition: border-color var(--transition);
+    }
+    .bp-field select:focus, .bp-field input:focus { border-color: var(--gold); }
+    .bp-field select option { background: #1a1510; }
+    .bp-field input::placeholder { color: rgba(255,255,255,0.28); }
+    .bp-nights {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(184,147,63,0.1); border: 1px solid rgba(184,147,63,0.28);
+      border-radius: 6px; padding: 14px 18px; margin-bottom: 22px;
+    }
+    .bp-nights-label { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+    .bp-nights-val { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--gold); }
+    .bp-price-row { display: flex; justify-content: space-between; font-size: 0.86rem; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+    .bp-price-row.total {
+      font-size: 0.98rem; color: var(--white); font-weight: 600;
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; margin-top: 14px;
+    }
+    .bp-price-row.total span:last-child { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.25rem; }
+    .btn-book-now {
+      width: 100%; background: var(--gold); color: var(--dark);
+      padding: 17px; border-radius: 6px; font-size: 0.93rem; font-weight: 700;
+      letter-spacing: 0.14em; margin-top: 22px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-book-now:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .bp-note { font-size: 0.73rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 12px; letter-spacing: 0.06em; }
+
+    /* ============================================================
+       AMENITIES
+    ============================================================ */
+    #amenities { padding: 120px 48px; background: var(--dark); }
+    #amenities .sec-title { color: var(--white); }
+    #amenities .sec-line { margin-bottom: 60px; }
+    .amenities-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .amenity-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 32px 24px;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .amenity-card:hover { background: rgba(184,147,63,0.1); border-color: rgba(184,147,63,0.35); transform: translateY(-5px); }
+    .amenity-icon-box {
+      width: 56px; height: 56px; background: rgba(184,147,63,0.13);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 20px;
+      transition: background var(--transition);
+    }
+    .amenity-card:hover .amenity-icon-box { background: rgba(184,147,63,0.28); }
+    .amenity-card h4 { font-size: 0.98rem; color: var(--white); margin-bottom: 10px; font-weight: 500; }
+    .amenity-card p { font-size: 0.82rem; color: rgba(255,255,255,0.48); line-height: 1.8; }
+
+    /* ============================================================
+       GALLERY
+    ============================================================ */
+    #gallery { padding: 120px 48px; background: var(--warm-gray); }
+    #gallery .sec-hd { text-align: center; }
+    #gallery .sec-line { margin: 20px auto 52px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: var(--radius); overflow: hidden;
+      cursor: pointer; position: relative;
+    }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; transition: transform 0.7s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,8,4,0); display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .gallery-overlay span { color: var(--white); font-size: 2rem; opacity: 0; transition: opacity var(--transition); }
+    .gallery-item:hover .gallery-overlay { background: rgba(10,8,4,0.42); }
+    .gallery-item:hover .gallery-overlay span { opacity: 1; }
+
+    /* Lightbox */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 900;
+      background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 88vh; width: auto; height: auto; border-radius: 6px; box-shadow: 0 0 80px rgba(0,0,0,0.6); }
+    .lb-close { position: absolute; top: 24px; right: 32px; color: var(--white); font-size: 2rem; cursor: pointer; transition: color var(--transition); }
+    .lb-close:hover { color: var(--gold); }
+    .lb-prev, .lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white); width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background var(--transition);
+    }
+    .lb-prev { left: 28px; }
+    .lb-next { right: 28px; }
+    .lb-prev:hover, .lb-next:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+    /* ============================================================
+       EXPERIENCE
+    ============================================================ */
+    #experience { padding: 120px 48px; background: var(--white); }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    .exp-card { border-radius: var(--radius); overflow: hidden; position: relative; height: 460px; cursor: pointer; }
+    .exp-card img { width: 100%; height: 100%; transition: transform 0.8s ease; }
+    .exp-card:hover img { transform: scale(1.06); }
+    .exp-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,8,4,0.88) 0%, rgba(10,8,4,0.08) 55%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 38px;
+    }
+    .exp-tag { font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .exp-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 12px; }
+    .exp-desc { font-size: 0.86rem; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 22px; }
+    .exp-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); font-size: 0.82rem; letter-spacing: 0.14em;
+      border-bottom: 1px solid transparent; transition: border-color var(--transition);
+    }
+    .exp-link:hover { border-color: var(--gold); }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    #testimonials { padding: 120px 48px; background: var(--warm-gray); }
+    #testimonials .sec-hd { text-align: center; }
+    #testimonials .sec-line { margin: 20px auto 56px; }
+    .testi-slider { position: relative; overflow: hidden; }
+    .testi-track { display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .testi-slide { min-width: calc(33.333% - 19px); margin-right: 28px; }
+    .testi-card { background: var(--white); border-radius: var(--radius); padding: 36px 32px; box-shadow: var(--shadow); height: 100%; }
+    .testi-stars { color: var(--gold); font-size: 0.95rem; letter-spacing: 5px; margin-bottom: 20px; }
+    .testi-quote { font-family: 'Noto Serif JP', serif; font-size: 0.93rem; color: var(--text); line-height: 2; margin-bottom: 26px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 46px; height: 46px; border-radius: 50%; background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); font-weight: 700;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
+    .testi-from { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+    .testi-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 44px; }
+    .testi-btn {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--white);
+      border: 1px solid #e0d8d0; color: var(--text); font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .testi-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+    /* ============================================================
+       ACCESS
+    ============================================================ */
+    #access { padding: 120px 48px; background: var(--white); }
+    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .map-placeholder { border-radius: var(--radius); overflow: hidden; height: 400px; box-shadow: var(--shadow-lg); }
+    .map-placeholder iframe { width: 100%; height: 100%; border: none; }
+    .access-items { display: flex; flex-direction: column; gap: 26px; margin-top: 32px; }
+    .access-item { display: flex; gap: 18px; align-items: flex-start; }
+    .access-icon {
+      width: 46px; height: 46px; min-width: 46px; background: var(--gold-pale);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .access-item h4 { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
+    .access-item p { font-size: 0.91rem; color: var(--text); line-height: 1.8; }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    #faq { padding: 120px 48px; background: var(--warm-gray); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
+    .faq-item { border-bottom: 1px solid #e0d8d0; padding: 22px 0; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; font-size: 0.93rem; font-weight: 500; color: var(--dark); gap: 16px;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; min-width: 28px; border: 1px solid var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem;
+      transition: transform var(--transition), background var(--transition), color var(--transition);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--dark); }
+    .faq-a {
+      max-height: 0; overflow: hidden; font-size: 0.87rem; color: var(--text-muted);
+      line-height: 1.88; transition: max-height 0.45s ease, padding var(--transition);
+    }
+    .faq-item.open .faq-a { max-height: 220px; padding-top: 14px; }
+
+    /* ============================================================
+       NEWSLETTER
+    ============================================================ */
+    #newsletter { background: var(--navy); padding: 88px 48px; text-align: center; }
+    .nl-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--white); margin-bottom: 14px; }
+    .nl-sub { font-size: 0.9rem; color: rgba(255,255,255,0.48); margin-bottom: 36px; letter-spacing: 0.1em; }
+    .nl-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 560px; margin: 0 auto; }
+    .nl-form input {
+      flex: 1; min-width: 240px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 3px;
+      padding: 14px 20px; color: var(--white); font-size: 0.92rem;
+    }
+    .nl-form input::placeholder { color: rgba(255,255,255,0.32); }
+    .nl-form input:focus { border-color: var(--gold); outline: none; }
+    .nl-btn {
+      background: var(--gold); color: var(--dark); padding: 14px 34px;
+      border-radius: 3px; font-weight: 700; font-size: 0.86rem; letter-spacing: 0.12em;
+      transition: background var(--transition);
+    }
+    .nl-btn:hover { background: var(--gold-light); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact { padding: 120px 48px; background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .contact-card {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--warm-gray); border-radius: var(--radius);
+      padding: 20px 22px; transition: box-shadow var(--transition);
+    }
+    .contact-card:hover { box-shadow: var(--shadow); }
+    .cc-icon {
+      width: 44px; height: 44px; min-width: 44px; background: var(--gold-pale);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .cc-label { font-size: 0.7rem; letter-spacing: 0.22em; color: var(--gold); margin-bottom: 5px; text-transform: uppercase; }
+    .cc-val { font-size: 0.92rem; color: var(--dark); font-weight: 500; line-height: 1.65; }
+    .cf-form { margin-top: 32px; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cf-group { margin-bottom: 18px; }
+    .cf-group label { display: block; font-size: 0.72rem; letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; }
+    .cf-group input, .cf-group select, .cf-group textarea {
+      width: 100%; background: var(--warm-gray); border: 1px solid #e0d8d0;
+      border-radius: 6px; padding: 13px 16px; font-size: 0.92rem; color: var(--dark);
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .cf-group input:focus, .cf-group select:focus, .cf-group textarea:focus { border-color: var(--gold); background: var(--white); outline: none; }
+    .cf-group textarea { resize: vertical; min-height: 130px; }
+    .cf-group select option { background: var(--white); }
+    .btn-send {
+      background: var(--dark); color: var(--white); padding: 15px 46px;
+      border-radius: 3px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.14em;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-send:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
+
+    /* Toast */
+    #toast {
+      position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(90px);
+      background: var(--dark); color: var(--white); padding: 16px 34px;
+      border-radius: 40px; font-size: 0.88rem; letter-spacing: 0.08em;
+      border: 1px solid var(--gold); z-index: 800; opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease; white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer { background: var(--dark); padding: 80px 48px 36px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2.2fr 1fr 1fr 1.3fr;
+      gap: 52px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo { height: 60px; width: auto; margin-bottom: 20px; }
+    .f-brand-desc { font-size: 0.84rem; color: rgba(255,255,255,0.42); line-height: 1.9; margin-bottom: 26px; max-width: 300px; }
+    .f-socials { display: flex; gap: 10px; }
+    .f-social {
+      width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; color: rgba(255,255,255,0.48);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .f-social:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,147,63,0.1); }
+    .f-col-title { font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+    .f-col ul { display: flex; flex-direction: column; gap: 12px; }
+    .f-col ul li a {
+      font-size: 0.85rem; color: rgba(255,255,255,0.46); letter-spacing: 0.05em;
+      transition: color var(--transition); display: flex; align-items: center; gap: 8px;
+    }
+    .f-col ul li a:hover { color: var(--gold-light); }
+    .f-col ul li a::before { content: '—'; font-size: 0.65rem; color: var(--gold); opacity: 0.5; }
+    .f-contact-list { display: flex; flex-direction: column; gap: 14px; }
+    .f-contact-item { display: flex; gap: 10px; align-items: flex-start; }
+    .f-contact-item span:first-child { font-size: 1rem; margin-top: 2px; }
+    .f-contact-item span:last-child { font-size: 0.83rem; color: rgba(255,255,255,0.46); line-height: 1.65; }
+    .footer-bottom {
+      padding-top: 30px; display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.78rem; color: rgba(255,255,255,0.28);
+    }
+    .footer-bottom a { color: var(--gold-light); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--gold); }
+    .footer-policy-links { display: flex; gap: 24px; }
+
+    /* Scroll Top */
+    #scroll-top {
+      position: fixed; bottom: 36px; right: 36px; z-index: 400;
+      width: 50px; height: 50px; background: var(--gold); color: var(--dark);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 4px 20px rgba(184,147,63,0.35);
+      opacity: 0; visibility: hidden; cursor: pointer;
+      transition: opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition);
+    }
+    #scroll-top.visible { opacity: 1; visibility: visible; }
+    #scroll-top:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1100px) {
+      .rooms-grid { grid-template-columns: repeat(2,1fr); }
+      .amenities-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      #header { padding: 0 24px; }
+      nav.main-nav { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      #about, #rooms, #calendar-section, #amenities,
+      #gallery, #experience, #testimonials, #access,
+      #faq, #newsletter, #contact { padding: 72px 24px; }
+      #numbers { padding: 48px 24px; }
+      .about-grid, .cal-layout, .access-grid,
+      .contact-grid, .faq-grid, .exp-grid { grid-template-columns: 1fr; gap: 40px; }
+      .numbers-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item.wide { grid-column: span 1; }
+      .gallery-item.tall { grid-row: span 1; }
+      .qb-inner { grid-template-columns: 1fr 1fr; }
+      .qb-submit { padding: 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+      .testi-slide { min-width: 100%; margin-right: 28px; }
+      .cf-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.6rem; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .qb-inner { grid-template-columns: 1fr; }
+      .numbers-grid { grid-template-columns: repeat(2,1fr); }
+      .hero-logo-img { width: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     LOADING
+============================================================ -->
+<div id="loading">
+  <img class="loading-logo-img" src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel Logo" />
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+  <span class="loading-text">Luxury · Comfort · Omotenashi</span>
+</div>
+
+<!-- ============================================================
+     MOBILE MENU
+============================================================ -->
+<div class="mobile-menu" id="mobileMenu">
+  <img class="mobile-menu-logo" src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel" />
+  <a href="#about"             onclick="closeMobile()">ホテルについて</a>
+  <a href="#rooms"             onclick="closeMobile()">客室</a>
+  <a href="#calendar-section" onclick="closeMobile()">ご予約</a>
+  <a href="#amenities"         onclick="closeMobile()">施設・設備</a>
+  <a href="#gallery"           onclick="closeMobile()">ギャラリー</a>
+  <a href="#experience"        onclick="closeMobile()">レストラン・スパ</a>
+  <a href="#contact"           onclick="closeMobile()">お問い合わせ</a>
+</div>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="header">
+  <a href="#home" class="header-logo">
+    <img src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel" />
+  </a>
+  <nav class="main-nav">
+    <a href="#about">ホテルについて</a>
+    <a href="#rooms">客室</a>
+    <a href="#calendar-section">ご予約</a>
+    <a href="#amenities">施設・設備</a>
+    <a href="#gallery">ギャラリー</a>
+    <a href="#experience">レストラン・スパ</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="#calendar-section" class="nav-reserve">今すぐ予約</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+  <div class="hero-content">
+    <img class="hero-logo-img" src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel" />
+    <p class="hero-eyebrow">Luxury · Comfort · Omotenashi</p>
+    <h1 class="hero-title">Kasup<em>in</em><br>Hotel</h1>
+    <p class="hero-subtitle">かすぴんホテル &nbsp;—&nbsp; 心に残るおもてなしを</p>
+    <div class="hero-btns">
+      <a href="#calendar-section" class="btn-gold">今すぐ予約する</a>
+      <a href="#rooms" class="btn-ghost">客室を見る</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUICK BOOKING BAR
+============================================================ -->
+<div id="quick-book">
+  <div class="qb-inner">
+    <div class="qb-field">
+      <label>チェックイン</label>
+      <input type="date" id="qbCheckin" />
+    </div>
+    <div class="qb-field">
+      <label>チェックアウト</label>
+      <input type="date" id="qbCheckout" />
+    </div>
+    <div class="qb-field">
+      <label>ご人数</label>
+      <select>
+        <option>1名様</option>
+        <option selected>2名様</option>
+        <option>3名様</option>
+        <option>4名様以上</option>
+      </select>
+    </div>
+    <div class="qb-field">
+      <label>客室タイプ</label>
+      <select>
+        <option>すべて</option>
+        <option>スタンダード</option>
+        <option>デラックス</option>
+        <option>スイート</option>
+      </select>
+    </div>
+    <button class="qb-submit" onclick="scrollToBooking()">空室を検索</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     NUMBERS
+============================================================ -->
+<div id="numbers">
+  <div class="numbers-grid reveal">
+    <div class="number-item">
+      <div class="number-val"><span class="count-up" data-target="15">0</span><sup>年</sup></div>
+      <div class="number-label">創業からの歴史</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val"><span class="count-up" data-target="120">0</span><sup>室</sup></div>
+      <div class="number-label">総客室数</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val"><span class="count-up" data-target="98">0</span><sup>%</sup></div>
+      <div class="number-label">お客様満足度</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val"><span class="count-up" data-target="50000">0</span><sup>+</sup></div>
+      <div class="number-label">累計ご宿泊数</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about">
+  <div class="section-wrap about-grid">
+    <div class="reveal">
+      <div class="about-imgs">
+        <div class="about-img-main">
+          <img src="https://www.genspark.ai/api/files/s/zKPfaGHx" alt="かすぴんホテル ロビー" />
+        </div>
+        <div class="about-img-s">
+          <img src="https://www.genspark.ai/api/files/s/3QfY3gmD" alt="かすぴんホテル 外観" />
+        </div>
+        <div class="about-img-s">
+          <img src="https://www.genspark.ai/api/files/s/J61dNdu2" alt="かすぴんホテル プール" />
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="sec-label">About Us</p>
+      <h2 class="sec-title">上質な空間と<br>心のこもった<br>おもてなし</h2>
+      <div class="sec-line"></div>
+      <p class="sec-desc">
+        かすぴんホテルは、日本の伝統的な「おもてなし」の精神と現代のラグジュアリーが融合した、都心に佇むリゾートホテルです。<br><br>
+        全室から望む美しい景色、厳選食材を使ったレストラン、心身を癒す温泉・スパ施設まで、旅の特別なひとときをトータルにご提供いたします。<br><br>
+        創業から15年、50,000名を超えるお客様にご愛顧いただいてきた信頼と実績で、最高の非日常体験をお届けします。
+      </p>
+      <div class="about-badge">
+        🏆 &nbsp; 旅行口コミサイト ラグジュアリーホテル 5年連続第1位
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ROOMS
+============================================================ -->
+<section id="rooms">
+  <div class="section-wrap">
+    <div class="sec-hd reveal">
+      <p class="sec-label">Accommodation</p>
+      <h2 class="sec-title">こだわりの客室</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://www.genspark.ai/api/files/s/ncaUHbao" alt="スタンダードルーム" />
+          <span class="room-badge">Standard</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">スタンダードルーム</h3>
+          <div class="room-meta">
+            <span>📐 32㎡</span>
+            <span>🛏 ダブル / ツイン</span>
+            <span>👥 最大2名</span>
+          </div>
+          <p class="room-desc">シンプルながらも上質なインテリアで統一された32㎡の客室。大きな窓から広がる都市の眺望と快適なベッドで、旅の疲れをゆっくり癒していただけます。</p>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">1泊 / 1室より</div>
+              <div class="room-price-val">¥15,000 <span>税込</span></div>
+            </div>
+            <a href="#calendar-section" class="btn-sm">予約する</a>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://www.genspark.ai/api/files/s/ncaUHbao" alt="デラックスルーム" />
+          <span class="room-badge">Deluxe</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">デラックスルーム</h3>
+          <div class="room-meta">
+            <span>📐 48㎡</span>
+            <span>🛏 キングサイズ</span>
+            <span>👥 最大2名</span>
+          </div>
+          <p class="room-desc">全室バルコニー付きの48㎡デラックスルーム。パノラマビューと高層階の開放感の中で、ゆったりとした贅沢なひとときをお過ごしいただけます。</p>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">1泊 / 1室より</div>
+              <div class="room-price-val">¥28,000 <span>税込</span></div>
+            </div>
+            <a href="#calendar-section" class="btn-sm">予約する</a>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://www.genspark.ai/api/files/s/UsfVoImQ" alt="プレミアスイート" />
+          <span class="room-badge">Suite</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">プレミアスイート</h3>
+          <div class="room-meta">
+            <span>📐 90㎡</span>
+            <span>🛁 プライベートジャグジー</span>
+            <span>👥 最大4名</span>
+          </div>
+          <p class="room-desc">90㎡以上の専用リビングと寝室を備えた最高級スイート。シャンデリアが輝く優雅な空間でパノラマビューを望む、究極のラグジュアリー体験を。</p>
+          <div class="room-footer">
+            <div>
+              <div class="room-price-label">1泊 / 1室より</div>
+              <div class="room-price-val">¥58,000 <span>税込</span></div>
+            </div>
+            <a href="#calendar-section" class="btn-sm">予約する</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALENDAR / BOOKING
+============================================================ -->
+<section id="calendar-section">
+  <div class="section-wrap">
+    <div class="cal-layout">
+      <div>
+        <p class="sec-label reveal">Reservation Calendar</p>
+        <h2 class="sec-title reveal">ご予約カレンダー</h2>
+        <div class="sec-line reveal"></div>
+        <p class="sec-desc reveal" style="margin-bottom:32px;">
+          ご希望の日程をカレンダーからお選びください。チェックイン日をクリック後、チェックアウト日をクリックすると日程が選択されます。
+          <br><br>
+          <span style="color:#d06060;">●</span> 満室日 は選択できません。
+        </p>
+        <div class="calendar-widget reveal">
+          <div class="cal-header">
+            <button class="cal-nav-btn" id="calPrev">&#8249;</button>
+            <div class="cal-month-year" id="calMonthYear"></div>
+            <button class="cal-nav-btn" id="calNext">&#8250;</button>
+          </div>
+          <div class="cal-body">
+            <div class="cal-days-header">
+              <span>日</span><span>月</span><span>火</span>
+              <span>水</span><span>木</span><span>金</span><span>土</span>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+          </div>
+          <div class="cal-legend">
+            <div class="legend-item"><div class="legend-dot ld-select"></div>選択中</div>
+            <div class="legend-item"><div class="legend-dot ld-range"></div>宿泊期間</div>
+            <div class="legend-item"><div class="legend-dot ld-booked"></div>満室</div>
+            <div class="legend-item"><div class="legend-dot ld-today"></div>本日</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Panel -->
+      <div class="reveal">
+        <div class="booking-panel">
+          <div class="bp-top">
+            <img class="bp-logo" src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel" />
+            <div class="bp-title">ご予約内容</div>
+            <div class="bp-sub">BOOKING SUMMARY</div>
+          </div>
+          <div class="bp-body">
+            <div class="bp-dates">
+              <div class="bp-date-box">
+                <div class="bp-date-label">チェックイン</div>
+                <div class="bp-date-val" id="bpCheckin">日程を選択</div>
+                <div class="bp-date-day" id="bpCheckinDay"></div>
+              </div>
+              <div class="bp-date-box">
+                <div class="bp-date-label">チェックアウト</div>
+                <div class="bp-date-val" id="bpCheckout">日程を選択</div>
+                <div class="bp-date-day" id="bpCheckoutDay"></div>
+              </div>
+            </div>
+            <div class="bp-nights" id="bpNightsRow" style="display:none;">
+              <span class="bp-nights-label">宿泊数</span>
+              <span class="bp-nights-val"><span id="bpNights">0</span> 泊</span>
+            </div>
+            <div class="bp-field">
+              <label>客室タイプ</label>
+              <select id="bpRoomType" onchange="updatePrice()">
+                <option value="15000">スタンダードルーム — ¥15,000〜/泊</option>
+                <option value="28000">デラックスルーム — ¥28,000〜/泊</option>
+                <option value="58000">プレミアスイート — ¥58,000〜/泊</option>
+              </select>
+            </div>
+            <div class="bp-field">
+              <label>ご人数</label>
+              <select id="bpGuests">
+                <option>1名様</option>
+                <option selected>2名様</option>
+                <option>3名様</option>
+                <option>4名様</option>
+              </select>
+            </div>
+            <div class="bp-field">
+              <label>プラン</label>
+              <select id="bpPlan" onchange="updatePrice()">
+                <option value="0">素泊まりプラン</option>
+                <option value="3500">朝食付きプラン (+¥3,500/泊)</option>
+                <option value="8000">2食付きプラン (+¥8,000/泊)</option>
+                <option value="15000">スパ＆ダイニングプラン (+¥15,000/泊)</option>
+              </select>
+            </div>
+            <div id="bpPriceBreakdown" style="display:none;">
+              <div class="bp-price-row"><span>客室料金</span><span id="bpRoomFee">¥0</span></div>
+              <div class="bp-price-row"><span>プラン料金</span><span id="bpPlanFee">¥0</span></div>
+              <div class="bp-price-row"><span>消費税・サービス料（10%）</span><span id="bpTax">¥0</span></div>
+              <div class="bp-price-row total"><span>合計金額</span><span id="bpTotal">¥0</span></div>
+            </div>
+            <button class="btn-book-now" onclick="submitBooking()">予約を確定する</button>
+            <p class="bp-note">✓ 無料キャンセル（チェックイン3日前まで）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AMENITIES
+============================================================ -->
+<section id="amenities">
+  <div class="section-wrap">
+    <p class="sec-label reveal">Facilities &amp; Services</p>
+    <h2 class="sec-title reveal" style="color:var(--white);">充実した施設・設備</h2>
+    <div class="sec-line reveal"></div>
+    <div class="amenities-grid">
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">🍽️</div>
+        <h4>メインレストラン</h4>
+        <p>和・洋・中3つのコンセプトを持つ本格レストラン。朝食・昼食・ディナーをご提供。厳選食材とシェフのこだわりが光ります。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">♨️</div>
+        <h4>天然温泉・スパ</h4>
+        <p>地下から湧き出る天然温泉と、各種トリートメントが揃うスパ。心身ともにリフレッシュできる特別な時間をどうぞ。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">🏊</div>
+        <h4>インフィニティプール</h4>
+        <p>最上階に広がる絶景インフィニティプール。夕日と街の夜景を眺めながら、非日常のひとときをお楽しみください。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">💪</div>
+        <h4>フィットネスジム</h4>
+        <p>最新機器を完備した24時間利用可能なジム。パーソナルトレーナーによる指導サービスもご利用いただけます。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">🍸</div>
+        <h4>スカイラウンジバー</h4>
+        <p>最上階から望む夜景を眺めながら、バーテンダーが贈るこだわりカクテルをお楽しみください。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">🎪</div>
+        <h4>バンケット・会議室</h4>
+        <p>最大300名収容のバンケットホールと完全個室の会議室。ウェディングからビジネス利用まで対応いたします。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">🚗</div>
+        <h4>バレットパーキング</h4>
+        <p>専任スタッフによるバレットパーキングサービス。地下駐車場200台分を完備、ご宿泊中は無料でご利用いただけます。</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon-box">👶</div>
+        <h4>キッズクラブ</h4>
+        <p>プロスタッフが常駐する安全な子どもの遊び場。思いきり楽しめる充実したプログラムをご用意しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+============================================================ -->
+<section id="gallery">
+  <div class="section-wrap">
+    <div class="sec-hd reveal">
+      <p class="sec-label">Photo Gallery</p>
+      <h2 class="sec-title">ギャラリー</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="gallery-grid">
+      <!-- 実際のKasupinHotel画像を最適配置 -->
+      <div class="gallery-item tall reveal" onclick="openLightbox(0)">
+        <img src="https://www.genspark.ai/api/files/s/3QfY3gmD" alt="かすぴんホテル 外観夜景" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item reveal" onclick="openLightbox(1)">
+        <img src="https://www.genspark.ai/api/files/s/zKPfaGHx" alt="ロビー" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item reveal" onclick="openLightbox(2)">
+        <img src="https://www.genspark.ai/api/files/s/ncaUHbao" alt="スタンダードルーム" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item wide reveal" onclick="openLightbox(3)">
+        <img src="https://www.genspark.ai/api/files/s/J61dNdu2" alt="インフィニティプール" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item reveal" onclick="openLightbox(4)">
+        <img src="https://www.genspark.ai/api/files/s/UsfVoImQ" alt="スイートルーム" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item reveal" onclick="openLightbox(5)">
+        <img src="https://www.genspark.ai/api/files/s/5gypG3ha" alt="レストラン" />
+        <div class="gallery-overlay"><span>+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span class="lb-close" onclick="closeLightbox()">✕</span>
+  <button class="lb-prev" onclick="lbNav(-1)">&#8249;</button>
+  <img id="lbImg" src="" alt="Gallery" />
+  <button class="lb-next" onclick="lbNav(1)">&#8250;</button>
+</div>
+
+<!-- ============================================================
+     EXPERIENCE
+============================================================ -->
+<section id="experience">
+  <div class="section-wrap">
+    <p class="sec-label reveal">Dining &amp; Wellness</p>
+    <h2 class="sec-title reveal">食と癒しの体験</h2>
+    <div class="sec-line reveal" style="margin-bottom:52px;"></div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <img src="https://www.genspark.ai/api/files/s/5gypG3ha" alt="レストラン 花かすみ" />
+        <div class="exp-card-overlay">
+          <p class="exp-tag">Restaurant</p>
+          <h3 class="exp-name">和洋折衷レストラン<br>「花かすみ」</h3>
+          <p class="exp-desc">旬の食材を活かした四季折々のコース料理。ソムリエ厳選のワインとともに、特別なひとときをお楽しみください。</p>
+          <a href="#contact" class="exp-link">レストランを予約する →</a>
+        </div>
+      </div>
+      <div class="exp-card reveal">
+        <img src="https://www.genspark.ai/api/files/s/J61dNdu2" alt="インフィニティプール スパ" />
+        <div class="exp-card-overlay">
+          <p class="exp-tag">Pool &amp; Spa</p>
+          <h3 class="exp-name">インフィニティプール<br>&amp; スパ「水かすみ」</h3>
+          <p class="exp-desc">最上階から望む絶景インフィニティプールと、天然温泉スパで心身を癒す、至高のウェルネス体験。</p>
+          <a href="#contact" class="exp-link">スパを予約する →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section id="testimonials">
+  <div class="section-wrap">
+    <div class="sec-hd reveal">
+      <p class="sec-label">Guest Reviews</p>
+      <h2 class="sec-title">お客様の声</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="testi-slider reveal">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">「スタッフの方々の笑顔と丁寧な対応に感動しました。客室からの眺めも最高で、毎晩夜景を眺めながら過ごしました。また必ず訪れたいと思います。」</p>
+            <div class="testi-author">
+              <div class="testi-avatar">田</div>
+              <div>
+                <div class="testi-name">田中 美咲 様</div>
+                <div class="testi-from">東京都 ／ ご夫婦でのご滞在</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">「インフィニティプールからの夕景が忘れられません。温泉とスパも最高で、日々の疲れが全て取れた感じがしました。レストランの食事も絶品でした。」</p>
+            <div class="testi-author">
+              <div class="testi-avatar">鈴</div>
+              <div>
+                <div class="testi-name">鈴木 健一 様</div>
+                <div class="testi-from">大阪府 ／ 記念日ご利用</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">「子連れでも気兼ねなく楽しめました。キッズクラブが充実していて子どもたちも大喜び。スイートルームが広くて家族全員でリラックスできました。」</p>
+            <div class="testi-author">
+              <div class="testi-avatar">山</div>
+              <div>
+                <div class="testi-name">山本 さくら 様</div>
+                <div class="testi-from">神奈川県 ／ ご家族でのご滞在</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">「スカイラウンジバーからの夜景が忘れられません。バーテンダーさんのカクテルも絶品で、パートナーへのサプライズも完璧にサポートしていただきました。」</p>
+            <div class="testi-author">
+              <div class="testi-avatar">佐</div>
+              <div>
+                <div class="testi-name">佐藤 大輝 様</div>
+                <div class="testi-from">愛知県 ／ プロポーズご利用</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">「出張で利用しましたが、ビジネスセンターが充実していてとても助かりました。チェックアウト後もラウンジでお仕事ができ、効率よく業務を進められました。」</p>
+            <div class="testi-author">
+              <div class="testi-avatar">中</div>
+              <div>
+                <div class="testi-name">中村 隆志 様</div>
+                <div class="testi-from">福岡県 ／ 出張ご利用</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn" onclick="testiNav(-1)">&#8249;</button>
+      <button class="testi-btn" onclick="testiNav(1)">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ACCESS
+============================================================ -->
+<section id="access">
+  <div class="section-wrap access-grid">
+    <div>
+      <p class="sec-label reveal">Access</p>
+      <h2 class="sec-title reveal">アクセス</h2>
+      <div class="sec-line reveal"></div>
+      <div class="access-items">
+        <div class="access-item reveal">
+          <div class="access-icon">📍</div>
+          <div>
+            <h4>所在地</h4>
+            <p>〒100-0001<br>東京都千代田区丸の内1丁目1番1号<br>かすぴんホテルタワー</p>
+          </div>
+        </div>
+        <div class="access-item reveal">
+          <div class="access-icon">🚃</div>
+          <div>
+            <h4>電車でお越しの場合</h4>
+            <p>JR東京駅 丸の内北口より 徒歩3分<br>東京メトロ 大手町駅 D2出口より 徒歩5分</p>
+          </div>
+        </div>
+        <div class="access-item reveal">
+          <div class="access-icon">✈️</div>
+          <div>
+            <h4>空港からお越しの場合</h4>
+            <p>成田空港より 成田エクスプレスで約60分<br>羽田空港より タクシーで約30分（送迎サービスあり）</p>
+          </div>
+        </div>
+        <div class="access-item reveal">
+          <div class="access-icon">🕐</div>
+          <div>
+            <h4>チェックイン / チェックアウト</h4>
+            <p>チェックイン：15:00〜（アーリーチェックイン応相談）<br>チェックアウト：〜11:00（レイトチェックアウト応相談）</p>
+          </div>
+        </div>
+        <div class="access-item reveal">
+          <div class="access-icon">🚌</div>
+          <div>
+            <h4>無料シャトルバス</h4>
+            <p>東京駅〜ホテル間の無料シャトルバスを運行（要予約）<br>運行時間：8:00〜22:00（30分間隔）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="map-placeholder">
+        <iframe
+          src="https://maps.google.com/maps?q=東京駅丸の内&output=embed&hl=ja"
+          allowfullscreen loading="lazy"
+          title="かすぴんホテルへのアクセスマップ">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq">
+  <div class="section-wrap">
+    <p class="sec-label reveal">FAQ</p>
+    <h2 class="sec-title reveal">よくあるご質問</h2>
+    <div class="sec-line reveal" style="margin-bottom:52px;"></div>
+    <div class="faq-grid">
+      <div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>キャンセルポリシーを教えてください</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">チェックイン3日前まで：無料キャンセル。2日前〜前日：室料の50%。当日・無連絡：室料の100%をキャンセル料としてご請求いたします。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>駐車場はありますか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">地下駐車場を完備しております（200台収容）。ご宿泊中は無料でご利用いただけます。バレットパーキングサービスもございます。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>ペットの同伴は可能ですか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">誠に恐れ入りますが、補助犬を除くペットのご同伴はご遠慮いただいております。ホテル近隣のペットホテルをご紹介することも可能です。お気軽にご相談ください。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Wi-Fiは利用できますか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">館内全エリアで高速Wi-Fiを無料でご利用いただけます。客室でのID・パスワードはチェックイン時にお渡しするカードをご確認ください。</div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>アーリーチェックイン・レイトチェックアウトは可能ですか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">アーリーチェックイン（14:00〜）、レイトチェックアウト（〜13:00）をオプションにてご用意しております。空室状況により承れない場合がございますので、事前にお問い合わせください。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>子ども料金はありますか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">3歳以下のお子様は添い寝無料（食事・寝具なし）。4〜12歳は大人料金の50%、13歳以上は大人と同料金となります。詳しくはお問い合わせください。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>空港からの送迎サービスはありますか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">羽田・成田両空港からのプライベート送迎サービスをご用意しております（有料）。ご予約時またはチェックイン3日前までにフロントへご連絡ください。</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>記念日のサプライズ演出は対応できますか？</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">誕生日・記念日・プロポーズなど、特別なシーンのご演出を承っております。バルーンデコレーション、ケーキ手配、フラワーアレンジメントなどご相談ください。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEWSLETTER
+============================================================ -->
+<div id="newsletter">
+  <h2 class="nl-title">最新情報・特別プランをお届け</h2>
+  <p class="nl-sub">メルマガ登録で会員限定の早期予約割引・スペシャルオファーをお受け取りください</p>
+  <div class="nl-form">
+    <input type="email" id="nlEmail" placeholder="メールアドレスを入力してください" />
+    <button class="nl-btn" onclick="subscribeNL()">登録する</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact">
+  <div class="section-wrap contact-grid">
+    <div>
+      <p class="sec-label reveal">Contact Us</p>
+      <h2 class="sec-title reveal">お問い合わせ</h2>
+      <div class="sec-line reveal"></div>
+      <div class="contact-cards">
+        <div class="contact-card reveal">
+          <div class="cc-icon">📞</div>
+          <div>
+            <div class="cc-label">お電話</div>
+            <div class="cc-val">03-1234-5678<br><span style="font-size:0.8rem;color:var(--text-muted);">受付時間 9:00〜21:00（年中無休）</span></div>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="cc-icon">✉️</div>
+          <div>
+            <div class="cc-label">メール</div>
+            <div class="cc-val">info@kasupinhotel.jp<br><span style="font-size:0.8rem;color:var(--text-muted);">24時間受付・翌営業日中にご返信</span></div>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="cc-icon">💬</div>
+          <div>
+            <div class="cc-label">LINE公式アカウント</div>
+            <div class="cc-val">@kasupinhotel<br><span style="font-size:0.8rem;color:var(--text-muted);">チャットでお気軽にご相談ください</span></div>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="cc-icon">🏨</div>
+          <div>
+            <div class="cc-label">フロント直通</div>
+            <div class="cc-val">03-1234-5679<br><span style="font-size:0.8rem;color:var(--text-muted);">24時間対応</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sec-title reveal" style="font-size:1.55rem;margin-bottom:10px;">メッセージを送る</h3>
+      <p class="reveal" style="font-size:0.87rem;color:var(--text-muted);">お気軽にお問い合わせください。担当者より迅速にご返信いたします。</p>
+      <div class="cf-form">
+        <div class="cf-row">
+          <div class="cf-group reveal">
+            <label>お名前 *</label>
+            <input type="text" id="cfName" placeholder="山田 太郎" />
+          </div>
+          <div class="cf-group reveal">
+            <label>メールアドレス *</label>
+            <input type="email" id="cfEmail" placeholder="example@mail.com" />
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-group reveal">
+            <label>お電話番号</label>
+            <input type="tel" id="cfTel" placeholder="090-0000-0000" />
+          </div>
+          <div class="cf-group reveal">
+            <label>お問い合わせ種別</label>
+            <select id="cfType">
+              <option>ご予約について</option>
+              <option>施設・設備について</option>
+              <option>レストラン予約</option>
+              <option>スパ予約</option>
+              <option>ウェディング・イベント</option>
+              <option>その他</option>
+            </select>
+          </div>
+        </div>
+        <div class="cf-group reveal">
+          <label>件名</label>
+          <input type="text" id="cfSubject" placeholder="ご予約確認について" />
+        </div>
+        <div class="cf-group reveal">
+          <label>メッセージ *</label>
+          <textarea id="cfMessage" placeholder="ご質問・ご要望をお気軽にお書きください…"></textarea>
+        </div>
+        <button class="btn-send reveal" onclick="sendContact()">送信する &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img class="footer-logo" src="https://www.genspark.ai/api/files/s/1bb7nIJU" alt="KasupinHotel" />
+      <p class="f-brand-desc">日本の伝統的なおもてなしと現代のラグジュアリーが融合した、都心のリゾートホテル。忘れられない特別なひとときをお届けします。</p>
+      <div class="f-socials">
+        <a href="#" class="f-social" title="Instagram">📸</a>
+        <a href="#" class="f-social" title="X (Twitter)">🐦</a>
+        <a href="#" class="f-social" title="Facebook">📘</a>
+        <a href="#" class="f-social" title="YouTube">▶️</a>
+        <a href="#" class="f-social" title="LINE">💬</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">ホテル情報</div>
+      <ul>
+        <li><a href="#about">ホテルについて</a></li>
+        <li><a href="#rooms">客室案内</a></li>
+        <li><a href="#amenities">施設・設備</a></li>
+        <li><a href="#gallery">ギャラリー</a></li>
+        <li><a href="#experience">レストラン・スパ</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">ご利用案内</div>
+      <ul>
+        <li><a href="#calendar-section">ご予約</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#newsletter">メルマガ登録</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">お問い合わせ先</div>
+      <div class="f-contact-list">
+        <div class="f-contact-item"><span>📍</span><span>〒100-0001 東京都千代田区丸の内1-1-1</span></div>
+        <div class="f-contact-item"><span>📞</span><span>03-1234-5678<br>（9:00〜21:00）</span></div>
+        <div class="f-contact-item"><span>✉️</span><span>info@kasupinhotel.jp</span></div>
+        <div class="f-contact-item"><span>🛎️</span><span>IN 15:00〜 ／ OUT 〜11:00</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 KasupinHotel. All rights reserved.</span>
+    <div class="footer-policy-links">
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">利用規約</a>
+      <a href="#">特定商取引法</a>
+      <a href="#">サイトマップ</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Top -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ戻る">↑</button>
+<div id="toast"></div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+/* ── Loading ─────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loading').classList.add('hidden'), 2200);
+});
+
+/* ── Header & Scroll ─────────────────────────── */
+const header = document.getElementById('header');
+const scrollTopBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  checkReveal();
+  countUpCheck();
+});
+
+/* ── Mobile Menu ─────────────────────────────── */
+function toggleMobile() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* ── Hero Slider ─────────────────────────────── */
+const heroSlides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.getElementById('heroDots');
+let currentSlide = 0;
+heroSlides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goSlide(i);
+  dotsContainer.appendChild(dot);
+});
+function goSlide(n) {
+  heroSlides[currentSlide].classList.remove('active');
+  document.querySelectorAll('.hero-dot')[currentSlide].classList.remove('active');
+  currentSlide = n;
+  heroSlides[currentSlide].classList.add('active');
+  document.querySelectorAll('.hero-dot')[currentSlide].classList.add('active');
+}
+setInterval(() => goSlide((currentSlide + 1) % heroSlides.length), 5500);
+
+/* ── Quick Book ──────────────────────────────── */
+(function() {
+  const today = new Date();
+  const fmt = d => d.toISOString().split('T')[0];
+  const tom   = new Date(today); tom.setDate(today.getDate() + 1);
+  const after = new Date(today); after.setDate(today.getDate() + 2);
+  const ci = document.getElementById('qbCheckin');
+  const co = document.getElementById('qbCheckout');
+  if (ci) { ci.value = fmt(tom);   ci.min = fmt(today); }
+  if (co) { co.value = fmt(after); co.min = fmt(tom); }
+  if (ci) ci.addEventListener('change', () => {
+    const d = new Date(ci.value); d.setDate(d.getDate() + 1);
+    if (!co.value || new Date(co.value) <= new Date(ci.value)) co.value = fmt(d);
+    co.min = ci.value;
+  });
+})();
+function scrollToBooking() {
+  document.getElementById('calendar-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── Calendar ────────────────────────────────── */
+const MONTHS_JP = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const WEEK_JP   = ['日','月','火','水','木','金','土'];
+
+const bookedDates = (() => {
+  const arr = [];
+  const now = new Date();
+  [3,4,5,12,13,20,21].forEach(d => {
+    const dt = new Date(now.getFullYear(), now.getMonth(), d);
+    if (dt >= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+      arr.push(dt.toISOString().split('T')[0]);
+    }
+  });
+  return arr;
+})();
+
+let calYear, calMonth, calCheckin = null, calCheckout = null, selStep = 0;
+
+function initCal() {
+  const now = new Date();
+  calYear = now.getFullYear(); calMonth = now.getMonth();
+  renderCal();
+}
+
+function renderCal() {
+  const grid = document.getElementById('calGrid');
+  document.getElementById('calMonthYear').textContent = `${calYear}年 ${MONTHS_JP[calMonth]}`;
+  grid.innerHTML = '';
+  const firstDow = new Date(calYear, calMonth, 1).getDay();
+  const lastDay  = new Date(calYear, calMonth + 1, 0).getDate();
+  const today    = new Date(); today.setHours(0,0,0,0);
+
+  for (let i = 0; i < firstDow; i++) {
+    const e = document.createElement('div'); e.className = 'cal-day empty'; grid.appendChild(e);
+  }
+  for (let d = 1; d <= lastDay; d++) {
+    const date = new Date(calYear, calMonth, d);
+    const iso  = date.toISOString().split('T')[0];
+    const dow  = date.getDay();
+    const isPast   = date < today;
+    const isBooked = bookedDates.includes(iso);
+    const isToday  = date.toDateString() === today.toDateString();
+
+    let cls = 'cal-day';
+    if (dow === 0) cls += ' sun';
+    if (dow === 6) cls += ' sat';
+    if (isPast)    cls += ' past';
+    else if (isBooked) cls += ' booked';
+    if (isToday)   cls += ' today';
+    if (calCheckin  && iso === calCheckin)  cls += ' checkin';
+    if (calCheckout && iso === calCheckout) cls += ' checkout';
+    if (calCheckin && calCheckout && iso > calCheckin && iso < calCheckout) cls += ' in-range';
+
+    const el = document.createElement('div');
+    el.className = cls;
+    el.textContent = d;
+    if (!isPast && !isBooked) el.onclick = () => pickDate(iso);
+    grid.appendChild(el);
+  }
+}
+
+function pickDate(iso) {
+  if (selStep === 0 || selStep === 2) {
+    calCheckin = iso; calCheckout = null; selStep = 1;
+  } else {
+    if (iso <= calCheckin) { calCheckin = iso; calCheckout = null; selStep = 1; }
+    else { calCheckout = iso; selStep = 2; updateBookingPanel(); }
+  }
+  renderCal();
+}
+
+function updateBookingPanel() {
+  const fmtDisp = iso => {
+    const d = new Date(iso);
+    return `${d.getMonth()+1}月${d.getDate()}日`;
+  };
+  const fmtDay = iso => `（${WEEK_JP[new Date(iso).getDay()]}）`;
+
+  document.getElementById('bpCheckin').textContent    = calCheckin  ? fmtDisp(calCheckin)  : '日程を選択';
+  document.getElementById('bpCheckinDay').textContent = calCheckin  ? fmtDay(calCheckin)   : '';
+  document.getElementById('bpCheckout').textContent   = calCheckout ? fmtDisp(calCheckout) : '日程を選択';
+  document.getElementById('bpCheckoutDay').textContent= calCheckout ? fmtDay(calCheckout)  : '';
+
+  if (calCheckin && calCheckout) {
+    const nights = Math.round((new Date(calCheckout) - new Date(calCheckin)) / 86400000);
+    document.getElementById('bpNights').textContent = nights;
+    document.getElementById('bpNightsRow').style.display = 'flex';
+    document.getElementById('bpPriceBreakdown').style.display = 'block';
+    updatePrice();
+  }
+}
+
+function updatePrice() {
+  if (!calCheckin || !calCheckout) return;
+  const nights   = Math.round((new Date(calCheckout) - new Date(calCheckin)) / 86400000);
+  const roomRate = parseInt(document.getElementById('bpRoomType').value);
+  const planRate = parseInt(document.getElementById('bpPlan').value);
+  const roomTotal = roomRate * nights;
+  const planTotal = planRate * nights;
+  const subtotal  = roomTotal + planTotal;
+  const tax       = Math.round(subtotal * 0.1);
+  const total     = subtotal + tax;
+  const fmt = n => '¥' + n.toLocaleString();
+  document.getElementById('bpRoomFee').textContent = fmt(roomTotal);
+  document.getElementById('bpPlanFee').textContent = fmt(planTotal);
+  document.getElementById('bpTax').textContent     = fmt(tax);
+  document.getElementById('bpTotal').textContent   = fmt(total);
+}
+
+document.getElementById('calPrev').onclick = () => {
+  calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal();
+};
+document.getElementById('calNext').onclick = () => {
+  calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal();
+};
+initCal();
+
+function submitBooking() {
+  if (!calCheckin || !calCheckout) {
+    showToast('⚠️ チェックイン・チェックアウト日を選択してください');
+    return;
+  }
+  showToast('✅ ご予約を受け付けました！確認メールをお送りします。');
+}
+
+/* ── Count Up ────────────────────────────────── */
+let countDone = false;
+function countUpCheck() {
+  if (countDone) return;
+  const el = document.getElementById('numbers');
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 60) {
+    countDone = true;
+    document.querySelectorAll('.count-up').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 55));
+      const timer = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(timer); }
+        el.textContent = cur.toLocaleString();
+      }, 22);
+    });
+  }
+}
+
+/* ── Reveal ──────────────────────────────────── */
+function checkReveal() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+  });
+}
+window.addEventListener('DOMContentLoaded', () => setTimeout(checkReveal, 150));
+
+/* ── Gallery Lightbox ────────────────────────── */
+const galleryImgs = [
+  'https://www.genspark.ai/api/files/s/3QfY3gmD',
+  'https://www.genspark.ai/api/files/s/zKPfaGHx',
+  'https://www.genspark.ai/api/files/s/ncaUHbao',
+  'https://www.genspark.ai/api/files/s/J61dNdu2',
+  'https://www.genspark.ai/api/files/s/UsfVoImQ',
+  'https://www.genspark.ai/api/files/s/5gypG3ha',
+];
+let lbIndex = 0;
+function openLightbox(i) {
+  lbIndex = i;
+  document.getElementById('lbImg').src = galleryImgs[i];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
+  document.getElementById('lbImg').src = galleryImgs[lbIndex];
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft')   lbNav(-1);
+  if (e.key === 'ArrowRight')  lbNav(1);
+});
+
+/* ── Testimonials Slider ─────────────────────── */
+let testiIndex = 0;
+const testiTrack = document.getElementById('testiTrack');
+const testiTotal = document.querySelectorAll('.testi-slide').length;
+function testiNav(dir) {
+  const perView = window.innerWidth > 900 ? 3 : 1;
+  const max = Math.max(0, testiTotal - perView);
+  testiIndex = Math.max(0, Math.min(testiIndex + dir, max));
+  const slideW = document.querySelector('.testi-slide').offsetWidth + 28;
+  testiTrack.style.transform = `translateX(-${testiIndex * slideW}px)`;
+}
+setInterval(() => {
+  const perView = window.innerWidth > 900 ? 3 : 1;
+  const max = Math.max(0, testiTotal - perView);
+  if (testiIndex >= max) testiIndex = -1;
+  testiNav(1);
+}, 5000);
+
+/* ── FAQ ─────────────────────────────────────── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── Newsletter ──────────────────────────────── */
+function subscribeNL() {
+  const v = document.getElementById('nlEmail').value;
+  if (!v || !v.includes('@')) { showToast('⚠️ 正しいメールアドレスを入力してください'); return; }
+  showToast('✅ メルマガ登録が完了しました！');
+  document.getElementById('nlEmail').value = '';
+}
+
+/* ── Contact Form ────────────────────────────── */
+function sendContact() {
+  const name  = document.getElementById('cfName').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+  const msg   = document.getElementById('cfMessage').value.trim();
+  if (!name || !email || !msg) { showToast('⚠️ お名前・メールアドレス・メッセージは必須項目です'); return; }
+  if (!email.includes('@'))   { showToast('⚠️ 正しいメールアドレスを入力してください'); return; }
+  showToast('✅ お問い合わせを受け付けました。担当者より折り返しご連絡いたします。');
+  ['cfName','cfEmail','cfTel','cfSubject','cfMessage'].forEach(id => { document.getElementById(id).value = ''; });
+}
+
+/* ── Toast ───────────────────────────────────── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4200);
+}
+</script>
+</body>
+</html>
