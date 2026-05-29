@@ -184,4 +184,668 @@ nav a:hover::after{width:55%}
 /* BOOKING PANEL */
 .bp{background:linear-gradient(160deg,var(--dark) 0%,var(--navy) 100%);border-radius:14px;overflow:hidden;box-shadow:var(--sh2)}
 .bpt{padding:28px 30px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04)}
-.bp-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.1em;margin-bottom:4
+.bp-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.1em;margin-bottom:4px}
+.bpti{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:3px}
+.bps{font-size:.72rem;color:rgba(255,255,255,.36);letter-spacing:.13em}
+.bpb{padding:26px 30px}
+.bpd{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:20px}
+.bpdb{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:13px 15px}
+.bpdl{font-size:.64rem;letter-spacing:.24em;color:var(--gold);margin-bottom:5px;text-transform:uppercase}
+.bpdv{font-size:.95rem;color:#fff;font-weight:500}
+.bpdd{font-size:.71rem;color:rgba(255,255,255,.36);margin-top:2px}
+.bpf{margin-bottom:14px}
+.bpf label{display:block;font-size:.66rem;letter-spacing:.22em;color:var(--gold);margin-bottom:7px;text-transform:uppercase}
+.bpf select,.bpf input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:5px;padding:12px 15px;color:#fff;font-size:.9rem;transition:border-color var(--t)}
+.bpf select:focus,.bpf input:focus{border-color:var(--gold)}
+.bpf select option{background:#1a1510}
+.bpn{display:flex;align-items:center;justify-content:space-between;background:rgba(184,147,63,.1);border:1px solid rgba(184,147,63,.28);border-radius:5px;padding:13px 17px;margin-bottom:20px}
+.bpnl{font-size:.8rem;color:rgba(255,255,255,.62)}
+.bpnv{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold)}
+.bpr{display:flex;justify-content:space-between;font-size:.84rem;color:rgba(255,255,255,.52);margin-bottom:9px}
+.bpr.tot{font-size:.95rem;color:#fff;font-weight:600;border-top:1px solid rgba(255,255,255,.1);padding-top:13px;margin-top:13px}
+.bpr.tot span:last-child{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.2rem}
+.bbn{width:100%;background:var(--gold);color:var(--dark);padding:16px;border-radius:5px;font-size:.9rem;font-weight:700;letter-spacing:.13em;margin-top:20px;transition:background var(--t),transform var(--t)}
+.bbn:hover{background:var(--gold-l);transform:translateY(-2px)}
+.bpno{font-size:.71rem;color:rgba(255,255,255,.28);text-align:center;margin-top:11px;letter-spacing:.06em}
+
+/* AMENITIES */
+#am{padding:112px 48px;background:var(--dark)}
+#am .st{color:#fff}
+#am .sln{margin-bottom:56px}
+.amg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.amc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:30px 22px;transition:background var(--t),border-color var(--t),transform var(--t)}
+.amc:hover{background:rgba(184,147,63,.1);border-color:rgba(184,147,63,.32);transform:translateY(-4px)}
+.ami{width:52px;height:52px;background:rgba(184,147,63,.13);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;transition:background var(--t)}
+.amc:hover .ami{background:rgba(184,147,63,.26)}
+.amc h4{font-size:.95rem;color:#fff;margin-bottom:9px;font-weight:500}
+.amc p{font-size:.8rem;color:rgba(255,255,255,.46);line-height:1.78}
+
+/* GALLERY */
+#gl{padding:112px 48px;background:var(--wg)}
+.gri{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:275px 275px;gap:11px}
+.gi{border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative}
+.gi.wd{grid-column:span 2}.gi.tl{grid-row:span 2}
+.gi img{width:100%;height:100%;transition:transform .7s ease}
+.gi:hover img{transform:scale(1.06)}
+.go{position:absolute;inset:0;background:rgba(10,8,4,0);display:flex;align-items:center;justify-content:center;transition:background var(--t)}
+.go span{color:#fff;font-size:1.8rem;opacity:0;transition:opacity var(--t)}
+.gi:hover .go{background:rgba(10,8,4,.4)}
+.gi:hover .go span{opacity:1}
+
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.94);align-items:center;justify-content:center}
+#lb.op{display:flex}
+#lb img{max-width:90vw;max-height:88vh;width:auto;height:auto;border-radius:5px}
+.lbc{position:absolute;top:22px;right:30px;color:#fff;font-size:1.9rem;cursor:pointer;transition:color var(--t)}
+.lbc:hover{color:var(--gold)}
+.lbp,.lbn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;width:50px;height:50px;border-radius:50%;font-size:1.4rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--t)}
+.lbp{left:26px}.lbn{right:26px}
+.lbp:hover,.lbn:hover{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+
+/* EXPERIENCE */
+#ex{padding:112px 48px;background:#fff}
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.ec{border-radius:var(--r);overflow:hidden;position:relative;height:450px;cursor:pointer}
+.ec img{width:100%;height:100%;transition:transform .8s ease}
+.ec:hover img{transform:scale(1.06)}
+.eco{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,4,.86) 0%,rgba(10,8,4,.06) 54%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.et{font-size:.66rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.en{font-family:'Playfair Display',serif;font-size:1.75rem;color:#fff;margin-bottom:11px}
+.ed{font-size:.84rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:20px}
+.el{display:inline-flex;align-items:center;gap:7px;color:var(--gold);font-size:.8rem;letter-spacing:.13em;border-bottom:1px solid transparent;transition:border-color var(--t)}
+.el:hover{border-color:var(--gold)}
+
+/* TESTIMONIALS */
+#ts{padding:112px 48px;background:var(--wg)}
+.tsl{position:relative;overflow:hidden}
+.tstr{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.tss{min-width:calc(33.333% - 19px);margin-right:28px}
+.tsc{background:#fff;border-radius:var(--r);padding:34px 30px;box-shadow:var(--sh);height:100%}
+.tst{color:var(--gold);font-size:.93rem;letter-spacing:5px;margin-bottom:18px}
+.tsq{font-family:'Playfair Display',serif;font-size:.91rem;color:var(--text);line-height:2;margin-bottom:24px;font-style:italic}
+.tsa{display:flex;align-items:center;gap:12px}
+.tsav{width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--dark);font-weight:700}
+.tsn{font-weight:600;font-size:.88rem;color:var(--dark)}
+.tsf{font-size:.73rem;color:var(--muted);margin-top:3px}
+.tscl{display:flex;justify-content:center;gap:11px;margin-top:40px}
+.tsb{width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid #e0d8d0;color:var(--text);font-size:1.05rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--t),border-color var(--t),color var(--t)}
+.tsb:hover{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+
+/* ACCESS */
+#ac{padding:112px 48px;background:#fff}
+.acg{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start}
+.mp{border-radius:var(--r);overflow:hidden;height:390px;box-shadow:var(--sh2)}
+.mp iframe{width:100%;height:100%;border:none}
+.aci{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+.acit{display:flex;gap:16px;align-items:flex-start}
+.acio{width:44px;height:44px;min-width:44px;background:var(--gold-p);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+.acit h4{font-size:.7rem;letter-spacing:.17em;color:var(--gold);margin-bottom:5px;text-transform:uppercase}
+.acit p{font-size:.89rem;color:var(--text);line-height:1.8}
+
+/* FAQ */
+#fq{padding:112px 48px;background:var(--wg)}
+.fqg{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+.fqi{border-bottom:1px solid #e0d8d0;padding:20px 0}
+.fqq{display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:.91rem;font-weight:500;color:var(--dark);gap:14px}
+.fqic{width:27px;height:27px;min-width:27px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.95rem;transition:transform var(--t),background var(--t),color var(--t)}
+.fqi.op .fqic{transform:rotate(45deg);background:var(--gold);color:var(--dark)}
+.fqa{max-height:0;overflow:hidden;font-size:.85rem;color:var(--muted);line-height:1.88;transition:max-height .4s ease,padding var(--t)}
+.fqi.op .fqa{max-height:200px;padding-top:12px}
+
+/* NEWSLETTER */
+#nl{background:var(--navy);padding:84px 48px;text-align:center}
+.nlt{font-family:'Playfair Display',serif;font-size:2.1rem;color:#fff;margin-bottom:13px}
+.nls{font-size:.88rem;color:rgba(255,255,255,.46);margin-bottom:32px;letter-spacing:.1em}
+.nlf{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;max-width:540px;margin:0 auto}
+.nlf input{flex:1;min-width:230px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:3px;padding:13px 18px;color:#fff;font-size:.9rem}
+.nlf input::placeholder{color:rgba(255,255,255,.3)}
+.nlf input:focus{border-color:var(--gold);outline:none}
+.nlb{background:var(--gold);color:var(--dark);padding:13px 30px;border-radius:3px;font-weight:700;font-size:.84rem;letter-spacing:.12em;transition:background var(--t)}
+.nlb:hover{background:var(--gold-l)}
+
+/* CONTACT */
+#ct{padding:112px 48px;background:#fff}
+.ctg{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.ccs{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cc{display:flex;gap:14px;align-items:flex-start;background:var(--wg);border-radius:var(--r);padding:18px 20px;transition:box-shadow var(--t)}
+.cc:hover{box-shadow:var(--sh)}
+.cco{width:42px;height:42px;min-width:42px;background:var(--gold-p);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ccl{font-size:.68rem;letter-spacing:.22em;color:var(--gold);margin-bottom:4px;text-transform:uppercase}
+.ccv{font-size:.9rem;color:var(--dark);font-weight:500;line-height:1.62}
+.cff{margin-top:30px}
+.cfr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cfg{margin-bottom:16px}
+.cfg label{display:block;font-size:.7rem;letter-spacing:.22em;color:var(--muted);margin-bottom:7px;text-transform:uppercase}
+.cfg input,.cfg select,.cfg textarea{width:100%;background:var(--wg);border:1px solid #e0d8d0;border-radius:5px;padding:12px 15px;font-size:.9rem;color:var(--dark);transition:border-color var(--t),background var(--t)}
+.cfg input:focus,.cfg select:focus,.cfg textarea:focus{border-color:var(--gold);background:#fff;outline:none}
+.cfg textarea{resize:vertical;min-height:125px}
+.bsn{background:var(--dark);color:#fff;padding:14px 42px;border-radius:3px;font-size:.88rem;font-weight:600;letter-spacing:.13em;transition:background var(--t),transform var(--t)}
+.bsn:hover{background:var(--gold);color:var(--dark);transform:translateY(-2px)}
+
+/* TOAST */
+#toast{position:fixed;bottom:34px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark);color:#fff;padding:14px 30px;border-radius:40px;font-size:.86rem;letter-spacing:.08em;border:1px solid var(--gold);z-index:800;opacity:0;transition:transform .38s ease,opacity .38s ease;white-space:nowrap;pointer-events:none}
+#toast.sh{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* FOOTER */
+footer{background:var(--dark);padding:72px 48px 32px}
+.fg{display:grid;grid-template-columns:2.1fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.06)}
+.f-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);letter-spacing:.1em;margin-bottom:16px}
+.fbd{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.88;margin-bottom:24px;max-width:290px}
+.fso{display:flex;gap:9px}
+.fs{width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:rgba(255,255,255,.46);transition:border-color var(--t),color var(--t),background var(--t)}
+.fs:hover{border-color:var(--gold);color:var(--gold);background:rgba(184,147,63,.1)}
+.fct{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.fc ul{display:flex;flex-direction:column;gap:11px}
+.fc ul li a{font-size:.83rem;color:rgba(255,255,255,.44);letter-spacing:.05em;transition:color var(--t);display:flex;align-items:center;gap:7px}
+.fc ul li a::before{content:'—';font-size:.63rem;color:var(--gold);opacity:.5}
+.fc ul li a:hover{color:var(--gold-l)}
+.fcl{display:flex;flex-direction:column;gap:13px}
+.fci{display:flex;gap:9px;align-items:flex-start}
+.fci span:first-child{font-size:.95rem;margin-top:2px}
+.fci span:last-child{font-size:.81rem;color:rgba(255,255,255,.44);line-height:1.62}
+.fb{padding-top:28px;display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.26)}
+.fb a{color:var(--gold-l);transition:color var(--t)}.fb a:hover{color:var(--gold)}
+.fpl{display:flex;gap:20px}
+
+/* SCROLL TOP */
+#st{position:fixed;bottom:34px;right:34px;z-index:400;width:48px;height:48px;background:var(--gold);color:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;box-shadow:0 4px 18px rgba(184,147,63,.32);opacity:0;visibility:hidden;cursor:pointer;transition:opacity var(--t),visibility var(--t),transform var(--t),background var(--t)}
+#st.vs{opacity:1;visibility:visible}
+#st:hover{background:var(--gold-l);transform:translateY(-3px)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .rg{grid-template-columns:repeat(2,1fr)}
+  .amg{grid-template-columns:repeat(2,1fr)}
+  .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  #hd{padding:0 22px}
+  nav{display:none}
+  .hbg{display:flex}
+  .mmenu{display:flex}
+  #ab,#rm,#cs,#am,#gl,#ex,#ts,#ac,#fq,#nl,#ct{padding:68px 22px}
+  #nb{padding:44px 22px}
+  .ag,.cl,.acg,.ctg,.fqg,.eg{grid-template-columns:1fr;gap:36px}
+  .ng{grid-template-columns:repeat(2,1fr);gap:20px}
+  .rg{grid-template-columns:1fr}
+  .gri{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gi.wd,.gi.tl{grid-column:span 1;grid-row:span 1}
+  .qbi{grid-template-columns:1fr 1fr}
+  .qbs{padding:18px}
+  .fg{grid-template-columns:1fr}
+  .fb{flex-direction:column;gap:13px;text-align:center}
+  .tss{min-width:100%;margin-right:28px}
+  .cfr{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .ht{font-size:2.6rem}
+  .amg{grid-template-columns:1fr}
+  .gri{grid-template-columns:1fr;grid-template-rows:auto}
+  .qbi{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="ld">
+  <div class="ld-logo">Kasup<span>in</span></div>
+  <div class="lb-w"><div class="lb-b"></div></div>
+  <span class="ld-t">Luxury · Comfort · Omotenashi</span>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mm">
+  <div class="mmenu-logo">KasupinHotel</div>
+  <a href="#ab" onclick="cm()">ホテルについて</a>
+  <a href="#rm" onclick="cm()">客室</a>
+  <a href="#cs" onclick="cm()">ご予約</a>
+  <a href="#am" onclick="cm()">施設・設備</a>
+  <a href="#gl" onclick="cm()">ギャラリー</a>
+  <a href="#ex" onclick="cm()">レストラン・スパ</a>
+  <a href="#ct" onclick="cm()">お問い合わせ</a>
+</div>
+
+<!-- HEADER -->
+<header id="hd">
+  <a href="#home">
+    <div class="hd-logo">KasupinHotel<small>かすぴんホテル</small></div>
+  </a>
+  <nav>
+    <a href="#ab">ホテルについて</a>
+    <a href="#rm">客室</a>
+    <a href="#cs">ご予約</a>
+    <a href="#am">施設・設備</a>
+    <a href="#gl">ギャラリー</a>
+    <a href="#ex">レストラン・スパ</a>
+    <a href="#ct">お問い合わせ</a>
+    <a href="#cs" class="nr">今すぐ予約</a>
+  </nav>
+  <div class="hbg" id="hbg" onclick="tm()"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hs ac"></div>
+  <div class="hs"></div>
+  <div class="hs"></div>
+  <div class="hc">
+    <div class="hero-logo-text">KasupinHotel</div>
+    <div class="hero-logo-sub">かすぴんホテル</div>
+    <p class="hey">Luxury · Comfort · Omotenashi</p>
+    <h1 class="ht">心に残る<br><em>おもてなし</em>を</h1>
+    <p class="hs2">Tokyo Luxury Resort &nbsp;—&nbsp; 非日常の特別なひとときへ</p>
+    <div class="hbs">
+      <a href="#cs" class="bg">今すぐ予約する</a>
+      <a href="#rm" class="bgh">客室を見る</a>
+    </div>
+  </div>
+  <div class="hdots" id="hd2"></div>
+  <div class="sci"><div class="scl"></div><span>SCROLL</span></div>
+</section>
+
+<!-- QUICK BOOK -->
+<div id="qb">
+  <div class="qbi">
+    <div class="qbf"><label>チェックイン</label><input type="date" id="qci"/></div>
+    <div class="qbf"><label>チェックアウト</label><input type="date" id="qco"/></div>
+    <div class="qbf"><label>ご人数</label><select><option>1名様</option><option selected>2名様</option><option>3名様</option><option>4名様以上</option></select></div>
+    <div class="qbf"><label>客室タイプ</label><select><option>すべて</option><option>スタンダード</option><option>デラックス</option><option>スイート</option></select></div>
+    <button class="qbs" onclick="stb()">空室を検索</button>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div id="nb">
+  <div class="ng rv">
+    <div class="ni"><div class="nv"><span class="cu" data-t="15">0</span><sup>年</sup></div><div class="nl2">創業からの歴史</div></div>
+    <div class="ni"><div class="nv"><span class="cu" data-t="120">0</span><sup>室</sup></div><div class="nl2">総客室数</div></div>
+    <div class="ni"><div class="nv"><span class="cu" data-t="98">0</span><sup>%</sup></div><div class="nl2">お客様満足度</div></div>
+    <div class="ni"><div class="nv"><span class="cu" data-t="50000">0</span><sup>+</sup></div><div class="nl2">累計ご宿泊数</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="ab">
+  <div class="sw ag">
+    <div class="rv">
+      <div class="aimgs">
+        <div class="aim"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80&auto=format&fit=crop" alt="ロビー" loading="lazy"/></div>
+        <div class="ais"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80&auto=format&fit=crop" alt="外観" loading="lazy"/></div>
+        <div class="ais"><img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=500&q=80&auto=format&fit=crop" alt="プール" loading="lazy"/></div>
+      </div>
+    </div>
+    <div class="rv">
+      <p class="sl">About Us</p>
+      <h2 class="st">上質な空間と<br>心のこもった<br>おもてなし</h2>
+      <div class="sln"></div>
+      <p class="sd">かすぴんホテルは、日本の伝統的な「おもてなし」の精神と現代のラグジュアリーが融合した、都心に佇むリゾートホテルです。<br><br>全室から望む美しい景色、厳選食材を使ったレストラン、心身を癒す温泉・スパ施設まで、旅の特別なひとときをトータルにご提供いたします。<br><br>創業から15年、50,000名を超えるお客様にご愛顧いただいてきた信頼と実績で、最高の非日常体験をお届けします。</p>
+      <div class="abg">🏆 &nbsp;旅行口コミサイト ラグジュアリーホテル 5年連続第1位</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rm">
+  <div class="sw">
+    <div style="text-align:center" class="rv">
+      <p class="sl">Accommodation</p>
+      <h2 class="st">こだわりの客室</h2>
+      <div class="sln" style="margin:18px auto 48px"></div>
+    </div>
+    <div class="rg">
+      <div class="rc rv">
+        <div class="riw">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80&auto=format&fit=crop" alt="スタンダードルーム" loading="lazy"/>
+          <span class="rbg">Standard</span>
+        </div>
+        <div class="rb">
+          <h3 class="rn">スタンダードルーム</h3>
+          <div class="rm2"><span>📐 32㎡</span><span>🛏 ダブル/ツイン</span><span>👥 最大2名</span></div>
+          <p class="rd">シンプルながらも上質なインテリアで統一された32㎡の客室。大きな窓から広がる都市の眺望と快適なベッドで、旅の疲れをゆっくり癒していただけます。</p>
+          <div class="rf"><div><div class="rpl">1泊/1室より</div><div class="rpv">¥15,000 <span>税込</span></div></div><a href="#cs" class="bsm">予約する</a></div>
+        </div>
+      </div>
+      <div class="rc rv">
+        <div class="riw">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=80&auto=format&fit=crop" alt="デラックスルーム" loading="lazy"/>
+          <span class="rbg">Deluxe</span>
+        </div>
+        <div class="rb">
+          <h3 class="rn">デラックスルーム</h3>
+          <div class="rm2"><span>📐 48㎡</span><span>🛏 キングサイズ</span><span>👥 最大2名</span></div>
+          <p class="rd">全室バルコニー付きの48㎡デラックスルーム。パノラマビューと高層階の開放感の中で、ゆったりとした贅沢なひとときをお過ごしいただけます。</p>
+          <div class="rf"><div><div class="rpl">1泊/1室より</div><div class="rpv">¥28,000 <span>税込</span></div></div><a href="#cs" class="bsm">予約する</a></div>
+        </div>
+      </div>
+      <div class="rc rv">
+        <div class="riw">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=80&auto=format&fit=crop" alt="プレミアスイート" loading="lazy"/>
+          <span class="rbg">Suite</span>
+        </div>
+        <div class="rb">
+          <h3 class="rn">プレミアスイート</h3>
+          <div class="rm2"><span>📐 90㎡</span><span>🛁 プライベートジャグジー</span><span>👥 最大4名</span></div>
+          <p class="rd">90㎡以上の専用リビングと寝室を備えた最高級スイート。シャンデリアが輝く優雅な空間で、究極のラグジュアリー体験を。</p>
+          <div class="rf"><div><div class="rpl">1泊/1室より</div><div class="rpv">¥58,000 <span>税込</span></div></div><a href="#cs" class="bsm">予約する</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="cs">
+  <div class="sw">
+    <div class="cl">
+      <div>
+        <p class="sl rv">Reservation Calendar</p>
+        <h2 class="st rv">ご予約カレンダー</h2>
+        <div class="sln rv"></div>
+        <p class="sd rv" style="margin-bottom:28px">ご希望の日程をカレンダーからお選びください。チェックイン日をクリック後、チェックアウト日をクリックすると日程が選択されます。<br><br><span style="color:#d06060">●</span> 満室日は選択できません。</p>
+        <div class="cw rv">
+          <div class="ch">
+            <button class="cnb" id="cp">&#8249;</button>
+            <div class="cmy" id="cmy"></div>
+            <button class="cnb" id="cn">&#8250;</button>
+          </div>
+          <div class="cbdy">
+            <div class="cdh"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+            <div class="cg" id="cg"></div>
+          </div>
+          <div class="cleg">
+            <div class="li"><div class="ld2 s"></div>選択中</div>
+            <div class="li"><div class="ld2 rg"></div>宿泊期間</div>
+            <div class="li"><div class="ld2 bk"></div>満室</div>
+            <div class="li"><div class="ld2 td"></div>本日</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="bp">
+          <div class="bpt">
+            <div class="bp-logo-text">KasupinHotel</div>
+            <div class="bpti">ご予約内容</div>
+            <div class="bps">BOOKING SUMMARY</div>
+          </div>
+          <div class="bpb">
+            <div class="bpd">
+              <div class="bpdb"><div class="bpdl">チェックイン</div><div class="bpdv" id="bci">日程を選択</div><div class="bpdd" id="bcid"></div></div>
+              <div class="bpdb"><div class="bpdl">チェックアウト</div><div class="bpdv" id="bco">日程を選択</div><div class="bpdd" id="bcod"></div></div>
+            </div>
+            <div class="bpn" id="bpn" style="display:none"><span class="bpnl">宿泊数</span><span class="bpnv"><span id="bni">0</span> 泊</span></div>
+            <div class="bpf"><label>客室タイプ</label><select id="brt" onchange="up()"><option value="15000">スタンダードルーム — ¥15,000〜/泊</option><option value="28000">デラックスルーム — ¥28,000〜/泊</option><option value="58000">プレミアスイート — ¥58,000〜/泊</option></select></div>
+            <div class="bpf"><label>ご人数</label><select><option>1名様</option><option selected>2名様</option><option>3名様</option><option>4名様</option></select></div>
+            <div class="bpf"><label>プラン</label><select id="bpl" onchange="up()"><option value="0">素泊まりプラン</option><option value="3500">朝食付き (+¥3,500/泊)</option><option value="8000">2食付き (+¥8,000/泊)</option><option value="15000">スパ&amp;ダイニング (+¥15,000/泊)</option></select></div>
+            <div id="bpbd" style="display:none">
+              <div class="bpr"><span>客室料金</span><span id="brf">¥0</span></div>
+              <div class="bpr"><span>プラン料金</span><span id="bpf2">¥0</span></div>
+              <div class="bpr"><span>消費税・サービス料(10%)</span><span id="btx">¥0</span></div>
+              <div class="bpr tot"><span>合計金額</span><span id="bto">¥0</span></div>
+            </div>
+            <button class="bbn" onclick="sb()">予約を確定する</button>
+            <p class="bpno">✓ 無料キャンセル（チェックイン3日前まで）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="am">
+  <div class="sw">
+    <p class="sl rv">Facilities &amp; Services</p>
+    <h2 class="st rv" style="color:#fff">充実した施設・設備</h2>
+    <div class="sln rv"></div>
+    <div class="amg">
+      <div class="amc rv"><div class="ami">🍽️</div><h4>メインレストラン</h4><p>和・洋・中3つのコンセプトを持つ本格レストラン。厳選食材とシェフのこだわりが光ります。</p></div>
+      <div class="amc rv"><div class="ami">♨️</div><h4>天然温泉・スパ</h4><p>地下から湧き出る天然温泉と各種トリートメントで、心身ともにリフレッシュ。</p></div>
+      <div class="amc rv"><div class="ami">🏊</div><h4>インフィニティプール</h4><p>最上階の絶景インフィニティプール。夕日と夜景を眺めながら非日常のひとときを。</p></div>
+      <div class="amc rv"><div class="ami">💪</div><h4>フィットネスジム</h4><p>最新機器完備の24時間ジム。パーソナルトレーナーによる指導サービスもあり。</p></div>
+      <div class="amc rv"><div class="ami">🍸</div><h4>スカイラウンジバー</h4><p>最上階から望む夜景を眺めながら、バーテンダーこだわりのカクテルを堪能。</p></div>
+      <div class="amc rv"><div class="ami">🎪</div><h4>バンケット・会議室</h4><p>最大300名収容のバンケットホール。ウェディングからビジネスまで対応。</p></div>
+      <div class="amc rv"><div class="ami">🚗</div><h4>バレットパーキング</h4><p>地下200台の駐車場完備。ご宿泊中は無料、バレットサービスもございます。</p></div>
+      <div class="amc rv"><div class="ami">👶</div><h4>キッズクラブ</h4><p>プロスタッフ常駐の安全な子どもの遊び場。充実したプログラムをご用意。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gl">
+  <div class="sw">
+    <div style="text-align:center" class="rv">
+      <p class="sl">Photo Gallery</p>
+      <h2 class="st">ギャラリー</h2>
+      <div class="sln" style="margin:18px auto 48px"></div>
+    </div>
+    <div class="gri">
+      <div class="gi tl rv" onclick="ol(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80&auto=format&fit=crop" alt="外観" loading="lazy"/><div class="go"><span>+</span></div></div>
+      <div class="gi rv" onclick="ol(1)"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80&auto=format&fit=crop" alt="ロビー" loading="lazy"/><div class="go"><span>+</span></div></div>
+      <div class="gi rv" onclick="ol(2)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80&auto=format&fit=crop" alt="客室" loading="lazy"/><div class="go"><span>+</span></div></div>
+      <div class="gi wd rv" onclick="ol(3)"><img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=900&q=80&auto=format&fit=crop" alt="プール" loading="lazy"/><div class="go"><span>+</span></div></div>
+      <div class="gi rv" onclick="ol(4)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&q=80&auto=format&fit=crop" alt="スイート" loading="lazy"/><div class="go"><span>+</span></div></div>
+      <div class="gi rv" onclick="ol(5)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80&auto=format&fit=crop" alt="レストラン" loading="lazy"/><div class="go"><span>+</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb"><span class="lbc" onclick="cl()">✕</span><button class="lbp" onclick="ln(-1)">&#8249;</button><img id="lbi" src="" alt="Gallery"/><button class="lbn" onclick="ln(1)">&#8250;</button></div>
+
+<!-- EXPERIENCE -->
+<section id="ex">
+  <div class="sw">
+    <p class="sl rv">Dining &amp; Wellness</p>
+    <h2 class="st rv">食と癒しの体験</h2>
+    <div class="sln rv" style="margin-bottom:48px"></div>
+    <div class="eg">
+      <div class="ec rv">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop" alt="レストラン" loading="lazy"/>
+        <div class="eco"><p class="et">Restaurant</p><h3 class="en">和洋折衷レストラン<br>「花かすみ」</h3><p class="ed">旬の食材を活かした四季折々のコース料理。ソムリエ厳選のワインとともに特別なひとときを。</p><a href="#ct" class="el">レストランを予約する →</a></div>
+      </div>
+      <div class="ec rv">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80&auto=format&fit=crop" alt="スパ" loading="lazy"/>
+        <div class="eco"><p class="et">Pool &amp; Spa</p><h3 class="en">インフィニティプール<br>&amp; スパ「水かすみ」</h3><p class="ed">最上階から望む絶景インフィニティプールと天然温泉スパで心身を癒す、至高のウェルネス体験。</p><a href="#ct" class="el">スパを予約する →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="ts">
+  <div class="sw">
+    <div style="text-align:center" class="rv">
+      <p class="sl">Guest Reviews</p>
+      <h2 class="st">お客様の声</h2>
+      <div class="sln" style="margin:18px auto 52px"></div>
+    </div>
+    <div class="tsl rv">
+      <div class="tstr" id="tstr">
+        <div class="tss"><div class="tsc"><div class="tst">★★★★★</div><p class="tsq">「スタッフの方々の笑顔と丁寧な対応に感動しました。客室からの眺めも最高で、毎晩夜景を眺めながら過ごしました。また必ず訪れたいと思います。」</p><div class="tsa"><div class="tsav">田</div><div><div class="tsn">田中 美咲 様</div><div class="tsf">東京都 ／ ご夫婦でのご滞在</div></div></div></div></div>
+        <div class="tss"><div class="tsc"><div class="tst">★★★★★</div><p class="tsq">「インフィニティプールからの夕景が忘れられません。温泉とスパも最高で、日々の疲れが全て取れました。レストランの食事も絶品でした。」</p><div class="tsa"><div class="tsav">鈴</div><div><div class="tsn">鈴木 健一 様</div><div class="tsf">大阪府 ／ 記念日ご利用</div></div></div></div></div>
+        <div class="tss"><div class="tsc"><div class="tst">★★★★★</div><p class="tsq">「子連れでも気兼ねなく楽しめました。キッズクラブが充実していて子どもたちも大喜び。スイートルームで家族全員リラックスできました。」</p><div class="tsa"><div class="tsav">山</div><div><div class="tsn">山本 さくら 様</div><div class="tsf">神奈川県 ／ ご家族でのご滞在</div></div></div></div></div>
+        <div class="tss"><div class="tsc"><div class="tst">★★★★★</div><p class="tsq">「スカイラウンジバーからの夜景が忘れられません。プロポーズも完璧にサポートしていただき、一生の思い出になりました。」</p><div class="tsa"><div class="tsav">佐</div><div><div class="tsn">佐藤 大輝 様</div><div class="tsf">愛知県 ／ プロポーズご利用</div></div></div></div></div>
+        <div class="tss"><div class="tsc"><div class="tst">★★★★★</div><p class="tsq">「出張で利用しましたが、ビジネスセンターが充実していてとても助かりました。チェックアウト後もラウンジで仕事ができ大変便利でした。」</p><div class="tsa"><div class="tsav">中</div><div><div class="tsn">中村 隆志 様</div><div class="tsf">福岡県 ／ 出張ご利用</div></div></div></div></div>
+      </div>
+    </div>
+    <div class="tscl"><button class="tsb" onclick="tn(-1)">&#8249;</button><button class="tsb" onclick="tn(1)">&#8250;</button></div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="ac">
+  <div class="sw acg">
+    <div>
+      <p class="sl rv">Access</p>
+      <h2 class="st rv">アクセス</h2>
+      <div class="sln rv"></div>
+      <div class="aci">
+        <div class="acit rv"><div class="acio">📍</div><div><h4>所在地</h4><p>〒100-0001 東京都千代田区丸の内1-1-1<br>かすぴんホテルタワー</p></div></div>
+        <div class="acit rv"><div class="acio">🚃</div><div><h4>電車でお越しの場合</h4><p>JR東京駅 丸の内北口より 徒歩3分<br>東京メトロ 大手町駅 D2出口より 徒歩5分</p></div></div>
+        <div class="acit rv"><div class="acio">✈️</div><div><h4>空港からお越しの場合</h4><p>成田空港より 成田エクスプレスで約60分<br>羽田空港より タクシーで約30分（送迎サービスあり）</p></div></div>
+        <div class="acit rv"><div class="acio">🕐</div><div><h4>チェックイン / チェックアウト</h4><p>IN：15:00〜（アーリーチェックイン応相談）<br>OUT：〜11:00（レイトチェックアウト応相談）</p></div></div>
+        <div class="acit rv"><div class="acio">🚌</div><div><h4>無料シャトルバス</h4><p>東京駅〜ホテル間を運行（要予約）<br>8:00〜22:00（30分間隔）</p></div></div>
+      </div>
+    </div>
+    <div class="rv"><div class="mp"><iframe src="https://maps.google.com/maps?q=東京駅丸の内&output=embed&hl=ja" allowfullscreen loading="lazy" title="アクセスマップ"></iframe></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="fq">
+  <div class="sw">
+    <p class="sl rv">FAQ</p>
+    <h2 class="st rv">よくあるご質問</h2>
+    <div class="sln rv" style="margin-bottom:48px"></div>
+    <div class="fqg">
+      <div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>キャンセルポリシーを教えてください</span><div class="fqic">+</div></div><div class="fqa">チェックイン3日前まで：無料。2日前〜前日：室料の50%。当日・無連絡：室料の100%をキャンセル料としてご請求いたします。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>駐車場はありますか？</span><div class="fqic">+</div></div><div class="fqa">地下駐車場を完備（200台）。ご宿泊中は無料。バレットパーキングサービスもございます。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>ペットの同伴は可能ですか？</span><div class="fqic">+</div></div><div class="fqa">補助犬を除くペットのご同伴はご遠慮いただいております。近隣のペットホテルをご紹介することも可能です。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>Wi-Fiは利用できますか？</span><div class="fqic">+</div></div><div class="fqa">館内全エリアで高速Wi-Fiを無料でご利用いただけます。ID・パスワードはチェックイン時にお渡しします。</div></div>
+      </div>
+      <div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>アーリーチェックイン・レイトチェックアウトは可能ですか？</span><div class="fqic">+</div></div><div class="fqa">アーリーチェックイン（14:00〜）、レイトチェックアウト（〜13:00）をオプションにてご用意。空室状況により承れない場合もございます。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>子ども料金はありますか？</span><div class="fqic">+</div></div><div class="fqa">3歳以下は添い寝無料（食事・寝具なし）。4〜12歳は大人料金の50%、13歳以上は大人と同料金となります。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>空港からの送迎サービスはありますか？</span><div class="fqic">+</div></div><div class="fqa">羽田・成田両空港からのプライベート送迎サービスをご用意（有料）。チェックイン3日前までにフロントへご連絡ください。</div></div>
+        <div class="fqi rv"><div class="fqq" onclick="tf(this)"><span>記念日のサプライズ演出は対応できますか？</span><div class="fqic">+</div></div><div class="fqa">誕生日・記念日・プロポーズなどの演出を承っております。バルーン、ケーキ、フラワーアレンジメントなどご相談ください。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div id="nl">
+  <h2 class="nlt">最新情報・特別プランをお届け</h2>
+  <p class="nls">メルマガ登録で会員限定の早期予約割引・スペシャルオファーをお受け取りください</p>
+  <div class="nlf"><input type="email" id="nle" placeholder="メールアドレスを入力してください"/><button class="nlb" onclick="sn()">登録する</button></div>
+</div>
+
+<!-- CONTACT -->
+<section id="ct">
+  <div class="sw ctg">
+    <div>
+      <p class="sl rv">Contact Us</p>
+      <h2 class="st rv">お問い合わせ</h2>
+      <div class="sln rv"></div>
+      <div class="ccs">
+        <div class="cc rv"><div class="cco">📞</div><div><div class="ccl">お電話</div><div class="ccv">03-1234-5678<br><span style="font-size:.78rem;color:var(--muted)">受付 9:00〜21:00（年中無休）</span></div></div></div>
+        <div class="cc rv"><div class="cco">✉️</div><div><div class="ccl">メール</div><div class="ccv">info@kasupinhotel.jp<br><span style="font-size:.78rem;color:var(--muted)">24時間受付・翌営業日中にご返信</span></div></div></div>
+        <div class="cc rv"><div class="cco">💬</div><div><div class="ccl">LINE公式</div><div class="ccv">@kasupinhotel<br><span style="font-size:.78rem;color:var(--muted)">チャットでお気軽にご相談</span></div></div></div>
+        <div class="cc rv"><div class="cco">🏨</div><div><div class="ccl">フロント直通</div><div class="ccv">03-1234-5679<br><span style="font-size:.78rem;color:var(--muted)">24時間対応</span></div></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="st rv" style="font-size:1.5rem;margin-bottom:8px">メッセージを送る</h3>
+      <p class="rv" style="font-size:.85rem;color:var(--muted)">お気軽にお問い合わせください。担当者より迅速にご返信いたします。</p>
+      <div class="cff">
+        <div class="cfr"><div class="cfg rv"><label>お名前 *</label><input type="text" id="cn2" placeholder="山田 太郎"/></div><div class="cfg rv"><label>メールアドレス *</label><input type="email" id="ce" placeholder="example@mail.com"/></div></div>
+        <div class="cfr"><div class="cfg rv"><label>お電話番号</label><input type="tel" id="ctel" placeholder="090-0000-0000"/></div><div class="cfg rv"><label>お問い合わせ種別</label><select><option>ご予約について</option><option>施設・設備について</option><option>レストラン予約</option><option>スパ予約</option><option>ウェディング・イベント</option><option>その他</option></select></div></div>
+        <div class="cfg rv"><label>件名</label><input type="text" placeholder="ご予約確認について"/></div>
+        <div class="cfg rv"><label>メッセージ *</label><textarea id="cm2" placeholder="ご質問・ご要望をお気軽にお書きください…"></textarea></div>
+        <button class="bsn rv" onclick="sc()">送信する &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg">
+    <div>
+      <div class="f-logo">KasupinHotel</div>
+      <p class="fbd">日本の伝統的なおもてなしと現代のラグジュアリーが融合した、都心のリゾートホテル。忘れられない特別なひとときをお届けします。</p>
+      <div class="fso"><a href="#" class="fs">📸</a><a href="#" class="fs">🐦</a><a href="#" class="fs">📘</a><a href="#" class="fs">▶️</a><a href="#" class="fs">💬</a></div>
+    </div>
+    <div class="fc"><div class="fct">ホテル情報</div><ul><li><a href="#ab">ホテルについて</a></li><li><a href="#rm">客室案内</a></li><li><a href="#am">施設・設備</a></li><li><a href="#gl">ギャラリー</a></li><li><a href="#ex">レストラン・スパ</a></li></ul></div>
+    <div class="fc"><div class="fct">ご利用案内</div><ul><li><a href="#cs">ご予約</a></li><li><a href="#fq">よくある質問</a></li><li><a href="#ac">アクセス</a></li><li><a href="#nl">メルマガ登録</a></li><li><a href="#ct">お問い合わせ</a></li></ul></div>
+    <div class="fc"><div class="fct">お問い合わせ先</div><div class="fcl"><div class="fci"><span>📍</span><span>〒100-0001 東京都千代田区丸の内1-1-1</span></div><div class="fci"><span>📞</span><span>03-1234-5678（9:00〜21:00）</span></div><div class="fci"><span>✉️</span><span>info@kasupinhotel.jp</span></div><div class="fci"><span>🛎️</span><span>IN 15:00〜 ／ OUT 〜11:00</span></div></div></div>
+  </div>
+  <div class="fb"><span>&copy; 2026 KasupinHotel. All rights reserved.</span><div class="fpl"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a><a href="#">特定商取引法</a><a href="#">サイトマップ</a></div></div>
+</footer>
+
+<button id="st" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ">↑</button>
+<div id="toast"></div>
+
+<script>
+'use strict';
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('ld').classList.add('hide'),2000));
+const hde=document.getElementById('hd'),ste=document.getElementById('st');
+let tk=false;
+function onSc(){const y=window.scrollY;hde.classList.toggle('sc',y>55);ste.classList.toggle('vs',y>380);checkRv();cuCk();tk=false}
+window.addEventListener('scroll',()=>{if(!tk){requestAnimationFrame(onSc);tk=true}});
+function tm(){document.getElementById('hbg').classList.toggle('op');document.getElementById('mm').classList.toggle('op')}
+function cm(){document.getElementById('hbg').classList.remove('op');document.getElementById('mm').classList.remove('op')}
+/* Hero */
+const sls=document.querySelectorAll('.hs'),dc=document.getElementById('hd2');
+let cs=0;
+sls.forEach((_,i)=>{const d=document.createElement('div');d.className='hdot'+(i===0?' ac':'');d.onclick=()=>gs(i);dc.appendChild(d)});
+function gs(n){sls[cs].classList.remove('ac');document.querySelectorAll('.hdot')[cs].classList.remove('ac');cs=n;sls[cs].classList.add('ac');document.querySelectorAll('.hdot')[cs].classList.add('ac')}
+setInterval(()=>gs((cs+1)%sls.length),5500);
+/* Quick Book */
+(()=>{const f=d=>d.toISOString().split('T')[0],t=new Date(),t2=new Date(t),a=new Date(t);t2.setDate(t.getDate()+1);a.setDate(t.getDate()+2);const ci=document.getElementById('qci'),co=document.getElementById('qco');if(ci){ci.value=f(t2);ci.min=f(t)}if(co){co.value=f(a);co.min=f(t2)}if(ci)ci.addEventListener('change',()=>{const d=new Date(ci.value);d.setDate(d.getDate()+1);if(!co.value||new Date(co.value)<=new Date(ci.value))co.value=f(d);co.min=ci.value})})();
+function stb(){document.getElementById('cs').scrollIntoView({behavior:'smooth'})}
+/* Calendar */
+const MJ=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],WJ=['日','月','火','水','木','金','土'];
+const bd=(()=>{const a=[],n=new Date();[3,4,5,12,13,20,21].forEach(d=>{const dt=new Date(n.getFullYear(),n.getMonth(),d);if(dt>=new Date(n.getFullYear(),n.getMonth(),n.getDate()))a.push(dt.toISOString().split('T')[0])});return a})();
+let cy,cm3,cin=null,cout=null,step=0;
+function ic(){const n=new Date();cy=n.getFullYear();cm3=n.getMonth();rc()}
+function rc(){
+  const g=document.getElementById('cg');document.getElementById('cmy').textContent=`${cy}年 ${MJ[cm3]}`;g.innerHTML='';
+  const fd=new Date(cy,cm3,1).getDay(),ld=new Date(cy,cm3+1,0).getDate(),td=new Date();td.setHours(0,0,0,0);
+  for(let i=0;i<fd;i++){const e=document.createElement('div');e.className='cd e';g.appendChild(e)}
+  for(let d=1;d<=ld;d++){
+    const dt=new Date(cy,cm3,d),iso=dt.toISOString().split('T')[0],dw=dt.getDay();
+    const ip=dt<td,ib=bd.includes(iso),it=dt.toDateString()===td.toDateString();
+    let c='cd';if(dw===0)c+=' su';if(dw===6)c+=' sa';if(ip)c+=' p';else if(ib)c+=' bk';if(it)c+=' td';
+    if(cin&&iso===cin)c+=' ci';if(cout&&iso===cout)c+=' co';if(cin&&cout&&iso>cin&&iso<cout)c+=' ir';
+    const el=document.createElement('div');el.className=c;el.textContent=d;if(!ip&&!ib)el.onclick=()=>pd(iso);g.appendChild(el);
+  }
+}
+function pd(iso){if(step===0||step===2){cin=iso;cout=null;step=1}else{if(iso<=cin){cin=iso;cout=null;step=1}else{cout=iso;step=2;ubp()}}rc()}
+function ubp(){
+  const fd=iso=>{const d=new Date(iso);return`${d.getMonth()+1}月${d.getDate()}日`},fw=iso=>`（${WJ[new Date(iso).getDay()]}）`;
+  document.getElementById('bci').textContent=cin?fd(cin):'日程を選択';document.getElementById('bcid').textContent=cin?fw(cin):'';
+  document.getElementById('bco').textContent=cout?fd(cout):'日程を選択';document.getElementById('bcod').textContent=cout?fw(cout):'';
+  if(cin&&cout){const n=Math.round((new Date(cout)-new Date(cin))/86400000);document.getElementById('bni').textContent=n;document.getElementById('bpn').style.display='flex';document.getElementById('bpbd').style.display='block';up()}
+}
+function up(){
+  if(!cin||!cout)return;
+  const n=Math.round((new Date(cout)-new Date(cin))/86400000),rr=parseInt(document.getElementById('brt').value),pr=parseInt(document.getElementById('bpl').value);
+  const rt=rr*n,pt=pr*n,sub=rt+pt,tax=Math.round(sub*.1),tot=sub+tax,f=v=>'¥'+v.toLocaleString();
+  document.getElementById('brf').textContent=f(rt);document.getElementById('bpf2').textContent=f(pt);document.getElementById('btx').textContent=f(tax);document.getElementById('bto').textContent=f(tot);
+}
+document.getElementById('cp').onclick=()=>{cm3--;if(cm3<0){cm3=11;cy--}rc()};
+document.getElementById('cn').onclick=()=>{cm3++;if(cm3>11){cm3=0;cy++}rc()};
+ic();
+function sb(){if(!cin||!cout){st2('⚠️ チェックイン・チェックアウト日を選択してください');return}st2('✅ ご予約を受け付けました！確認メールをお送りします。')}
+/* CountUp */
+let cdone=false;
+function cuCk(){if(cdone)return;const el=document.getElementById('nb');if(!el)return;if(el.getBoundingClientRect().top<window.innerHeight-60){cdone=true;document.querySelectorAll('.cu').forEach(el=>{const t=parseInt(el.dataset.t);let c=0;const s=Math.max(1,Math.ceil(t/55));const ti=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(ti)}el.textContent=c.toLocaleString()},22)})}}
+/* Reveal */
+function checkRv(){document.querySelectorAll('.rv:not(.vs)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-75)el.classList.add('vs')})}
+document.addEventListener('DOMContentLoaded',()=>setTimeout(checkRv,100));
+/* Lightbox */
+const gi2=['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=85&auto=format','https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1400&q=85&auto=format','https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=85&auto=format','https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=1400&q=85&auto=format','https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1400&q=85&auto=format','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=85&auto=format'];
+let li2=0;
+function ol(i){li2=i;document.getElementById('lbi').src=gi2[i];document.getElementById('lb').classList.add('op');document.body.style.overflow='hidden'}
+function cl(){document.getElementById('lb').classList.remove('op');document.body.style.overflow=''}
+function ln(d){li2=(li2+d+gi2.length)%gi2.length;document.getElementById('lbi').src=gi2[li2]}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))cl()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('op'))return;if(e.key==='Escape')cl();if(e.key==='ArrowLeft')ln(-1);if(e.key==='ArrowRight')ln(1)});
+/* Testimonials */
+let ti=0;const tt=document.getElementById('tstr'),tl=document.querySelectorAll('.tss').length;
+function tn(d){const pv=window.innerWidth>900?3:1,mx=Math.max(0,tl-pv);ti=Math.max(0,Math.min(ti+d,mx));const sw=document.querySelector('.tss').offsetWidth+28;tt.style.transform=`translateX(-${ti*sw}px)`}
+setInterval(()=>{const pv=window.innerWidth>900?3:1,mx=Math.max(0,tl-pv);if(ti>=mx)ti=-1;tn(1)},5200);
+/* FAQ */
+function tf(el){const it=el.parentElement,op=it.classList.contains('op');document.querySelectorAll('.fqi.op').forEach(i=>i.classList.remove('op'));if(!op)it.classList.add('op')}
+/* Newsletter */
+function sn(){const v=document.getElementById('nle').value;if(!v||!v.includes('@')){st2('⚠️ 正しいメールアドレスを入力してください');return}st2('✅ メルマガ登録が完了しました！');document.getElementById('nle').value=''}
+/* Contact */
+function sc(){const n=document.getElementById('cn2').value.trim(),e=document.getElementById('ce').value.trim(),m=document.getElementById('cm2').value.trim();if(!n||!e||!m){st2('⚠️ お名前・メールアドレス・メッセージは必須です');return}if(!e.includes('@')){st2('⚠️ 正しいメールアドレスを入力してください');return}st2('✅ お問い合わせを受け付けました。担当者より折り返しご連絡いたします。');['cn2','ce','ctel','cm2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''})}
+/* Toast */
+function st2(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('sh');setTimeout(()=>t.classList.remove('sh'),4000)}
+</script>
+</body>
+</html>
